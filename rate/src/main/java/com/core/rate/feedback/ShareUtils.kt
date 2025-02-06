@@ -12,28 +12,11 @@ import android.os.Build
 import android.os.Environment
 import android.os.StatFs
 import android.util.Log
-import com.core.rate.BuildConfig
 import com.core.rate.R
 import java.util.Locale
 
 
 object ShareUtils {
-    const val PACKAGE_INSTAGRAM = "com.instagram.android"
-    const val PACKAGE_WHATSAPP = "com.whatsapp"
-    const val PACKAGE_FACEBOOK = "com.facebook.katana"
-    const val PACKAGE_MESSENGER = "com.facebook.orca"
-    const val PACKAGE_TWITTER = "com.twitter.android"
-    const val EMAIL = "kunkunnapps@gmail.com"
-
-    val PACKAGE_SHARE_LIST = mutableListOf<String>().apply {
-        add(PACKAGE_INSTAGRAM)
-        add(PACKAGE_WHATSAPP)
-        add(PACKAGE_FACEBOOK)
-        add(PACKAGE_MESSENGER)
-        add(PACKAGE_TWITTER)
-    }
-
-
 
     private fun shareAppEmail(context: Context, subject: String, body: String) {
         try {
@@ -76,63 +59,75 @@ object ShareUtils {
     }
 
     fun feedbackFocusEmail(context: Context, feedback: Feedback) {
-        val appName = getAppName(context)
-        val versionName = getAppVersionName(context)
-        val subject = String.format("%s %s v%s", context.getString(R.string.fb_text_feedback_to), appName, getAppVersionName(context))
-        val tagBuilder = StringBuilder()
-        if (feedback.isFeatureQuality) {
-            tagBuilder.append("#Feature quality ")
-        }
-        if (feedback.isCrash) {
-            tagBuilder.append("#Crash ")
-        }
-        if (feedback.isBug) {
-            tagBuilder.append("#Bug ")
-        }
-        if (feedback.isOthers) {
-            tagBuilder.append("#Others ")
-        }
-
-        val info = getDeviceAndAppMemoryInfo(context)
-
-        val builder =
-            StringBuilder(tagBuilder.toString())
-                .append("\n\n")
-                .append(feedback.content).append("\n\n\n\n")
-                .append(appName).append(" v").append(versionName).append("\n\n")
-//                .append("Package Name: ").append(BuildConfig.APPLICATION_ID).append("\n")
-                .append("Device Model: ").append(getDeviceName()).append("\n")
-                .append("Android Version: ").append(Build.VERSION.RELEASE).append("\n")
-                .append("Resolution: ").append(getResolution()).append("\n")
-                .append("Total Storage: ").append(info["Total Storage"]).append("\n")
-                .append("Free Storage: ").append(info["Free Storage"]).append("\n")
-                .append("Total RAM: ").append(info["Total RAM"]).append("\n")
-                .append("Free RAM: ").append(info["Free RAM"]).append("\n")
-                .append("Low Memory: ").append(info["Low Memory"]).append("\n")
-
-        val body = builder.toString()
-        val feedbackIntent = Intent(Intent.ACTION_SEND)
-        feedbackIntent.type = "message/rfc822"
-        feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(EMAIL))
-        feedbackIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
-        feedbackIntent.putExtra(Intent.EXTRA_TEXT, body)
-        val queryIntentActivities = context.packageManager.queryIntentActivities(Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:")), PackageManager.MATCH_DEFAULT_ONLY)
-
-        val list = ArrayList<Intent>()
-        if(queryIntentActivities.size > 0) {
-            queryIntentActivities.forEach {
-                val activityInfo = it.activityInfo
-                list.add(Intent(feedbackIntent).apply {
-                    setPackage(activityInfo.packageName)
-                    setComponent(ComponentName(activityInfo.packageName, activityInfo.name))
-                })
-            }
-        } else {
-            list.add(feedbackIntent)
-        }
-
         kotlin.runCatching {
-            val chooserIntent = Intent.createChooser(list.removeAt(0), context.getString(R.string.fb_share_with))
+            val email = context.getString(R.string.fb_email_feedback)
+            val appName = getAppName(context)
+            val versionName = getAppVersionName(context)
+            val subject = String.format(
+                "%s %s v%s",
+                context.getString(R.string.fb_text_feedback_to),
+                appName,
+                getAppVersionName(context)
+            )
+            val tagBuilder = StringBuilder()
+            if (feedback.isFeatureQuality) {
+                tagBuilder.append("#Feature quality ")
+            }
+            if (feedback.isCrash) {
+                tagBuilder.append("#Crash ")
+            }
+            if (feedback.isBug) {
+                tagBuilder.append("#Bug ")
+            }
+            if (feedback.isOthers) {
+                tagBuilder.append("#Others ")
+            }
+
+            val info = getDeviceAndAppMemoryInfo(context)
+
+            val builder =
+                StringBuilder(tagBuilder.toString())
+                    .append("\n\n")
+                    .append(feedback.content).append("\n\n\n\n")
+                    .append(appName).append(" v").append(versionName).append("\n\n")
+//                .append("Package Name: ").append(BuildConfig.APPLICATION_ID).append("\n")
+                    .append("Device Model: ").append(getDeviceName()).append("\n")
+                    .append("Android Version: ").append(Build.VERSION.RELEASE).append("\n")
+                    .append("Resolution: ").append(getResolution()).append("\n")
+                    .append("Total Storage: ").append(info["Total Storage"]).append("\n")
+                    .append("Free Storage: ").append(info["Free Storage"]).append("\n")
+                    .append("Total RAM: ").append(info["Total RAM"]).append("\n")
+                    .append("Free RAM: ").append(info["Free RAM"]).append("\n")
+                    .append("Low Memory: ").append(info["Low Memory"]).append("\n")
+
+            val body = builder.toString()
+            val feedbackIntent = Intent(Intent.ACTION_SEND)
+            feedbackIntent.type = "message/rfc822"
+            feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+            feedbackIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
+            feedbackIntent.putExtra(Intent.EXTRA_TEXT, body)
+            val queryIntentActivities = context.packageManager.queryIntentActivities(
+                Intent(
+                    Intent.ACTION_SENDTO,
+                    Uri.parse("mailto:")
+                ), PackageManager.MATCH_DEFAULT_ONLY
+            )
+
+            val list = ArrayList<Intent>()
+            if (queryIntentActivities.size > 0) {
+                queryIntentActivities.forEach {
+                    val activityInfo = it.activityInfo
+                    list.add(Intent(feedbackIntent).apply {
+                        setPackage(activityInfo.packageName)
+                        setComponent(ComponentName(activityInfo.packageName, activityInfo.name))
+                    })
+                }
+            } else {
+                list.add(feedbackIntent)
+            }
+
+            val chooserIntent =
+                Intent.createChooser(list.removeAt(0), context.getString(R.string.fb_share_with))
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, list.toTypedArray())
             context.startActivity(chooserIntent)
         }.onFailure {
@@ -141,9 +136,15 @@ object ShareUtils {
     }
 
     fun feedbackNew(context: Context, feedback: Feedback) {
+        val email = context.getString(R.string.fb_email_feedback)
         val appName = getAppName(context)
         val versionName = getAppVersionName(context)
-        val subject = String.format("%s %s v%s", context.getString(R.string.fb_text_feedback_to), appName, getAppVersionName(context))
+        val subject = String.format(
+            "%s %s v%s",
+            context.getString(R.string.fb_text_feedback_to),
+            appName,
+            getAppVersionName(context)
+        )
         val tagBuilder = StringBuilder()
         if (feedback.isFeatureQuality) {
             tagBuilder.append("#Feature quality ")
@@ -178,23 +179,33 @@ object ShareUtils {
         val body = builder.toString()
         val feedbackIntent = Intent(Intent.ACTION_SEND)
         feedbackIntent.type = "message/rfc822"
-        feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(EMAIL))
+        feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
         feedbackIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
         feedbackIntent.putExtra(Intent.EXTRA_TEXT, body)
 
-        val chooserIntent = getIntentChooser(context, feedbackIntent, context.getString(R.string.fb_share_with), object : ComponentNameFilter {
-            override fun shouldBeFilteredOut(componentName: ComponentName): Boolean {
-                Log.d("TAG", "shouldBeFilteredOut: $componentName")
-                return PACKAGE_MAIL_LIST.contains(componentName.packageName)
-            }
-        })
+        val chooserIntent = getIntentChooser(
+            context,
+            feedbackIntent,
+            context.getString(R.string.fb_share_with),
+            object : ComponentNameFilter {
+                override fun shouldBeFilteredOut(componentName: ComponentName): Boolean {
+                    Log.d("TAG", "shouldBeFilteredOut: $componentName")
+                    return PACKAGE_MAIL_LIST.contains(componentName.packageName)
+                }
+            })
         context.startActivity(chooserIntent)
     }
 
     fun feedback(context: Context, feedback: Feedback, appName: String) {
+        val email = context.getString(R.string.fb_email_feedback)
         val pack = "com.google.android.gm"
         val versionName = getAppVersionName(context)
-        val subject = String.format("%s %s v%s", context.getString(R.string.fb_text_feedback_to), appName , versionName)
+        val subject = String.format(
+            "%s %s v%s",
+            context.getString(R.string.fb_text_feedback_to),
+            appName,
+            versionName
+        )
         val tagBuilder = StringBuilder()
         if (feedback.isFeatureQuality) {
             tagBuilder.append("# Feature quality ")
@@ -231,7 +242,7 @@ object ShareUtils {
                 val feedbackIntent = Intent(Intent.ACTION_SEND)
                 feedbackIntent.type = "message/rfc822"
                 feedbackIntent.setPackage(pack)
-                feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(EMAIL))
+                feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
                 feedbackIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
                 feedbackIntent.putExtra(Intent.EXTRA_TEXT, body)
                 context.startActivity(feedbackIntent)
@@ -272,7 +283,11 @@ object ShareUtils {
     }
 
     private fun formatSize(sizeInBytes: Long): String {
-        return String.format(Locale.US, "%.1f", sizeInBytes / 1_073_741_824.0) // Định dạng đến 1 chữ số thập phân
+        return String.format(
+            Locale.US,
+            "%.1f",
+            sizeInBytes / 1_073_741_824.0
+        ) // Định dạng đến 1 chữ số thập phân
     }
 
     private fun getAppMemoryInfo(context: Context): ActivityManager.MemoryInfo {
@@ -284,10 +299,11 @@ object ShareUtils {
 
     private fun feedback2(context: Context, subject: String, body: String) {
         try {
+            val email = context.getString(R.string.fb_email_feedback)
             //When Gmail App is not installed or disable
             val feedbackIntent = Intent(Intent.ACTION_SEND)
             feedbackIntent.type = "message/rfc822"
-            feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(EMAIL))
+            feedbackIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
             feedbackIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
             feedbackIntent.putExtra(Intent.EXTRA_TEXT, body)
             if (feedbackIntent.resolveActivity(context.packageManager) != null) {
@@ -304,17 +320,24 @@ object ShareUtils {
         return if (model.lowercase().startsWith(manufacturer.lowercase())) {
             model.lowercase(Locale.getDefault()).replaceFirstChar { it.titlecase() }
         } else {
-            manufacturer.lowercase(Locale.getDefault()).replaceFirstChar { it.titlecase() } + " " + model
+            manufacturer.lowercase(Locale.getDefault())
+                .replaceFirstChar { it.titlecase() } + " " + model
         }
     }
 
     private fun getResolution(): String {
         val builder = StringBuilder()
-        builder.append(Resources.getSystem().displayMetrics.heightPixels).append("x").append(Resources.getSystem().displayMetrics.widthPixels)
+        builder.append(Resources.getSystem().displayMetrics.heightPixels).append("x")
+            .append(Resources.getSystem().displayMetrics.widthPixels)
         return builder.toString()
     }
 
-    private fun getIntentChooser(context: Context, intent: Intent, chooserTitle: CharSequence? = null, filter: ComponentNameFilter): Intent? {
+    private fun getIntentChooser(
+        context: Context,
+        intent: Intent,
+        chooserTitle: CharSequence? = null,
+        filter: ComponentNameFilter,
+    ): Intent? {
         val resolveInfo = context.packageManager.queryIntentActivities(intent, 0)
         val excludedComponentNames = HashSet<ComponentName>()
         resolveInfo.forEach {
@@ -332,13 +355,24 @@ object ShareUtils {
             val targetIntents: MutableList<Intent> = ArrayList()
             for (resolve in resolveInfo) {
                 val activityInfo = resolve.activityInfo
-                if (excludedComponentNames.contains(ComponentName(activityInfo.packageName, activityInfo.name)))
+                if (excludedComponentNames.contains(
+                        ComponentName(
+                            activityInfo.packageName,
+                            activityInfo.name
+                        )
+                    )
+                )
                     continue
                 val targetIntent = Intent(intent)
                 targetIntent.setPackage(activityInfo.packageName)
                 targetIntent.component = ComponentName(activityInfo.packageName, activityInfo.name)
                 // wrap with LabeledIntent to show correct name and icon
-                val labeledIntent = LabeledIntent(targetIntent, activityInfo.packageName, resolve.labelRes, resolve.icon)
+                val labeledIntent = LabeledIntent(
+                    targetIntent,
+                    activityInfo.packageName,
+                    resolve.labelRes,
+                    resolve.icon
+                )
                 // add filtered intent to a list
                 targetIntents.add(labeledIntent)
             }

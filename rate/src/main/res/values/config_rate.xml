@@ -45,5 +45,7 @@
     <drawable name="fb_ic_star_fill">@drawable/fb__ic_star_fill</drawable>
     <drawable name="fb_ic_star_selector">@drawable/fb__ic_star_selector</drawable>
 
+    <string name="fb_email_feedback" translatable="false">kunkunnapps@gmail.com</string>
+
 
 </resources>

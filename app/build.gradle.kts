@@ -74,4 +74,5 @@ dependencies {
     implementation("com.google.android.play:review-ktx:2.0.2")
 
     implementation(project(":rate"))
+//    implementation ("com.github.nguyenvuong0308:GSRate:1.0.0")
 }
