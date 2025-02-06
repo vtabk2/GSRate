@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatImageView
-        style="@style/BaseLogoThanks" />
+        style="@style/LogoThanks" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
