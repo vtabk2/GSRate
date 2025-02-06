@@ -79,7 +79,7 @@ class RateInApp {
         onShowThanks: () -> Boolean = { false }, // return true nếu muốn tự xử lý rate( show in-app review hoặc nhảy sang play store), mặc định sẽ nhảy sang play store
         forceShow: Boolean = false
     ) {
-        if (!isInternetAvailable(context) && forceShow) return
+        if (!isInternetAvailable(context) && !forceShow) return
         RateDialog(context).also {
             onShowDialogRate()
             it.onRate = { star ->
