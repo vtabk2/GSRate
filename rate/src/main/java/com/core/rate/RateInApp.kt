@@ -126,7 +126,7 @@ class RateInApp {
 
     private fun showActivityFeedback(context: Context, onResult: (ActivityResult) -> Unit) {
         if (!::startActivityIntent.isInitialized) {
-            throw RuntimeException("Please call create() first before showFeedback(), call create() in onCreate() of Activity")
+            throw RuntimeException("Please call registerForFeedback() first before showFeedback(), call create() in onCreate() of Activity or onCreate of Fragment")
         }
         this.onResult = onResult
         startActivityIntent.launch(Intent(context, FeedbackActivity::class.java))
