@@ -140,6 +140,10 @@ Custom lại style cho icon nếu icon dài:
 
 > fb_button_submit_feedback_inside_input = true
 
+- Show text *loại* ở màn feedback
+
+> fb_show_text_type_in_feedback = true
+
 **Dialog Thanks**
 - icon nút thanks, có thể custom lại imageView bằng style LogoThanks
 
