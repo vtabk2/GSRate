@@ -56,4 +56,6 @@
         <item name="android:textSize">@dimen/fb_text_size_feedback_matter</item>
     </style>
 
+    <style name="FB_TextType"></style>
+
 </resources>

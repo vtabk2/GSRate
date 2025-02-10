@@ -23,6 +23,7 @@
     <color name="fb_text_color_best_rate">#2CA6FF</color>
 
     <bool name="fb_button_submit_feedback_inside_input">false</bool>
+    <bool name="fb_show_text_type_in_feedback">false</bool>
     <bool name="fb_matter_feedback_flex_ui">false</bool>
 
     <drawable name="fb_bg_click_star">@drawable/fb__bg_click_star</drawable>

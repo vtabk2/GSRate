@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="fb_text_size_best_rate">14sp</dimen>
+    <dimen name="fb_text_size_type">14sp</dimen>
 </resources>

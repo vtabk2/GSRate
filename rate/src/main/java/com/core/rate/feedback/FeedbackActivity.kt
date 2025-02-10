@@ -96,6 +96,8 @@ class FeedbackActivity: AppCompatActivity() {
             matterFlexible.visibility = if(isFlexUI) View.VISIBLE else View.GONE
             matterLinear.visibility = if(!isFlexUI) View.VISIBLE else View.GONE
 
+            val isType = resources.getBoolean(R.bool.fb_show_text_type_in_feedback)
+            tvType.visibility = if(isType) View.VISIBLE else View.GONE
 
 
             val listOption = if(!isFlexUI) listOf(tvFeatureQuality, tvCrash, tvBug, tvOthers) else listOf(tvFeatureQualityFl, tvCrashFl, tvBugFl, tvOtherFl)
@@ -124,6 +126,8 @@ class FeedbackActivity: AppCompatActivity() {
                 setResult(Activity.RESULT_OK)
                 finish()
             }
+
+
         }
     }
 
