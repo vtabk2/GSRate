@@ -14,7 +14,7 @@ dependencyResolutionManagement {
 **Step 2.** Add the dependency
 ```css
 dependencies {
-	        implementation 'com.github.nguyenvuong0308:GSrate:1.0.3'
+	        implementation 'com.github.nguyenvuong0308:GSrate:1.0.6'
 	}
 ```
 **Requirement:**
@@ -45,14 +45,6 @@ Sẽ ko show dialog, nếu vẫn muốn show thì set forceShow = true (dùng kh
 **Chặn quảng cáo sau khi feedback**, check thêm điều kiện **isCanShowAppOpen** trước  khi show resume app
 
     RateInApp.instance.isCanShowAppOpen
-
-**Add to AndroidManifest**
-
-    <activity  
-	    android:name="com.core.rate.feedback.FeedbackActivity"  
-	    android:screenOrientation="portrait"  
-	    android:configChanges="uiMode|orientation|screenSize"  
-	    android:windowSoftInputMode="adjustNothing" />
 
 **Edit email feedback**
 
