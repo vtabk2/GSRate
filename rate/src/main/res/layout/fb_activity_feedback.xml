@@ -78,63 +78,70 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/matterLinear"
+        android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible"
         android:layout_marginTop="15dp"
-        android:paddingHorizontal="12dp">
+        android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvFeatureQuality"
-            android:layout_width="0dp"
-            style="@style/TextMatter"
-            android:layout_marginTop="0dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_weight="1"
-            android:paddingVertical="8dp"
-            android:text="@string/fb_feedback_feature_quality"/>
+            android:paddingHorizontal="12dp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCrash"
-            style="@style/TextMatter"
-            android:layout_width="0dp"
-            android:layout_marginTop="0dp"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFeatureQuality"
+                android:layout_width="0dp"
+                style="@style/TextMatter"
+                android:layout_marginTop="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:paddingVertical="8dp"
+                android:text="@string/fb_feedback_feature_quality"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCrash"
+                style="@style/TextMatter"
+                android:layout_width="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:paddingVertical="8dp"
+                android:text="@string/fb_feedback_crash"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="0dp"
-            android:layout_weight="1"
-            android:paddingVertical="8dp"
-            android:text="@string/fb_feedback_crash"/>
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="12dp">
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBug"
+                style="@style/TextMatter"
+                android:layout_width="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="8dp"
+                android:text="@string/fb_feedback_bug" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:paddingHorizontal="12dp">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvOthers"
+                android:layout_width="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="0dp"
+                style="@style/TextMatter"
+                android:paddingVertical="8dp"
+                android:text="@string/fb_feedback_other"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvBug"
-            style="@style/TextMatter"
-            android:layout_width="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingVertical="8dp"
-            android:text="@string/fb_feedback_bug" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvOthers"
-            android:layout_width="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="0dp"
-            style="@style/TextMatter"
-            android:paddingVertical="8dp"
-            android:text="@string/fb_feedback_other"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
