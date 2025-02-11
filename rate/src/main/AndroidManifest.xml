@@ -20,6 +20,7 @@
     <application>
         <activity
             android:name="com.core.rate.feedback.FeedbackActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true"/>
     </application>
 
