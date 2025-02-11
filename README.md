@@ -14,7 +14,7 @@ dependencyResolutionManagement {
 **Step 2.** Add the dependency
 ```css
 dependencies {
-	        implementation 'com.github.nguyenvuong0308:GSrate:1.0.6'
+	        implementation 'com.github.nguyenvuong0308:GSrate:1.0.7'
 	}
 ```
 **Requirement:**
@@ -139,6 +139,10 @@ Custom lại style cho icon nếu icon dài:
 - nếu muốn nút submit nằm trong background của input text
 
 > fb_button_submit_feedback_inside_input = true
+
+- Show text *loại* ở màn feedback
+
+> fb_show_text_type_in_feedback = true
 
 **Dialog Thanks**
 - icon nút thanks, có thể custom lại imageView bằng style LogoThanks
