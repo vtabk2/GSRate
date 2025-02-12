@@ -20,20 +20,22 @@ class RateInApp {
     companion object {
         val instance = RateInApp()
         const val TAG = "RateInApp"
-        const val FB_RATE_IN_APP = "FB_RATE_IN_APP"
     }
 
-    private lateinit var startActivityIntent: ActivityResultLauncher<Intent>
+    private var startActivityIntent: ActivityResultLauncher<Intent> ?= null
     private var onResult: ((ActivityResult) -> Unit)? = null
     var isCanShowAppOpen = true
     var isShowThanks = false
-
+    private var intentActivity = HashMap<Int, ActivityResultLauncher<Intent>>()
 
     // Call this method in onCreate() of Application
     fun registerActivityLifecycle(application: Application) {
         application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 Log.e(TAG, "onActivityCreated: ${activity::class.java.simpleName}")
+                (activity as? ComponentActivity)?.let {
+                    registerForFeedback(activity)
+                }
             }
 
             override fun onActivityStarted(activity: Activity) {
@@ -48,6 +50,9 @@ class RateInApp {
                         ThankForFeedbackDialog().show(activity.supportFragmentManager, "thanks")
                         isShowThanks = false
                     }
+                }
+                (activity as? ComponentActivity)?.let {
+                    startActivityIntent = intentActivity[activity.hashCode()]!!
                 }
             }
 
@@ -65,6 +70,9 @@ class RateInApp {
 
             override fun onActivityDestroyed(activity: Activity) {
                 Log.e(TAG, "onActivityDestroyed: ${activity::class.java.simpleName}")
+                (activity as? ComponentActivity)?.let {
+                    intentActivity[activity.hashCode()]?.unregister()
+                }
             }
         })
     }
@@ -109,28 +117,15 @@ class RateInApp {
     }
 
     // Call this method in onCreate() of Activity
-    fun registerForFeedback(activity: ComponentActivity) {
-        startActivityIntent =
-            activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                onResult?.invoke(it)
-            }
-    }
-
-    // Call this method in onCreate() of Fragment
-    fun registerForFeedback(fragment: Fragment) {
-        startActivityIntent =
-            fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                onResult?.invoke(it)
-            }
+    private fun registerForFeedback(activity: ComponentActivity) {
+        intentActivity[activity.hashCode()] = activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            onResult?.invoke(it)
+        }
     }
 
     private fun showActivityFeedback(context: Context, onResult: (ActivityResult) -> Unit) {
-        if (!::startActivityIntent.isInitialized) {
-            throw RuntimeException("Please call registerForFeedback() first before showFeedback(), call create() in onCreate() of Activity or onCreate of Fragment")
-        }
         this.onResult = onResult
-        startActivityIntent.launch(Intent(context, FeedbackActivity::class.java))
+        startActivityIntent?.launch(Intent(context, FeedbackActivity::class.java))
     }
-
 
 }
