@@ -14,7 +14,7 @@ dependencyResolutionManagement {
 **Step 2.** Add the dependency
 ```css
 dependencies {
-	        implementation 'com.github.nguyenvuong0308:GSrate:1.0.8'
+	        implementation 'com.github.nguyenvuong0308:GSrate:1.0.9'
 	}
 ```
 **Requirement:**
@@ -22,9 +22,6 @@ Application:
 
     RateInApp.instance.registerActivityLifecycle(this)
 
-Activity OnCreate or Fragment OnCreate:
-
-    RateInApp.instance.registerForFeedback(this)
 Call Dialog Rate: 
 
     RateInApp.instance.showDialogRateAndFeedback()
