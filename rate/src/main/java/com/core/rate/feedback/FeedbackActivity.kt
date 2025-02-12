@@ -90,6 +90,7 @@ class FeedbackActivity: AppCompatActivity() {
             if(resources.getBoolean(R.bool.fb_button_submit_feedback_inside_input)) {
                 val lp = ivSendFeedback.layoutParams as LinearLayoutCompat.LayoutParams
                 lp.setMargins(lp.leftMargin, resources.getDimensionPixelSize(R.dimen.fb_top_margin_button_submit_feedback), lp.rightMargin, lp.bottomMargin)
+                edtFeedback.setPadding(edtFeedback.paddingLeft, edtFeedback.paddingTop, edtFeedback.paddingRight, resources.getDimensionPixelSize(R.dimen.fb_bottom_padding_input))
             }
 
             val isFlexUI = resources.getBoolean(R.bool.fb_matter_feedback_flex_ui)

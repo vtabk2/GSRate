@@ -167,6 +167,7 @@
         android:background="@drawable/fb_bg_edit_feedback"
         android:fontFamily="@font/roboto_regular"
         android:gravity="start"
+        android:text="aasd\n\asd\nasd\nas\nasdf\nasf\nasdf\nasdf\nasf\nasdf\nasf\nasf\nasf\nasf\nasf"
         android:hint="@string/fb_hint_feedback"
         android:padding="10dp"
         android:textColor="@color/fb_feedback_title"
