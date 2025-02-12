@@ -21,6 +21,7 @@
         <activity
             android:name="com.core.rate.feedback.FeedbackActivity"
             android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"
             android:exported="true"/>
     </application>
 
