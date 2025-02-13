@@ -13,6 +13,7 @@
     <dimen name="fb_button_feedback_matter_radius">8dp</dimen>
     <dimen name="fb_top_margin_button_submit_feedback">-70dp</dimen>
     <dimen name="fb_bottom_padding_input">75dp</dimen>
+    <dimen name="fb_padding_bottom_feedback">30dp</dimen>
 
     <color name="fb_bg_feedback">#ffffff</color>
     <color name="fb_feedback_title">#000000</color>
