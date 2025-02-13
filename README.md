@@ -107,7 +107,7 @@ Custom lại style cho icon nếu icon dài:
         <item name="android:layout_marginTop">-32dp</item>
         <item name="android:layout_marginEnd">10dp</item> 
         <item name="android:layout_marginStart">10dp</item> 
-        <item name="android:src">@drawable/ic_logofeedback</item>   
+        <item name="android:src">@drawable/fb_ic_feedback_screen</item>   
     </style>
     
 3. List các lý do
