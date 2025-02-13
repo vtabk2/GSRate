@@ -171,7 +171,7 @@
             android:paddingVertical="15dp"
             android:text="@string/fb_feedback_rate"
             android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:textSize="@dimen/fb_text_size_button_rate_now"
             app:layout_constraintTop_toBottomOf="@+id/ivHand" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
