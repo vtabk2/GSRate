@@ -103,7 +103,7 @@ class FeedbackActivity: AppCompatActivity() {
 
             val listOption = if(!isFlexUI) listOf(tvFeatureQuality, tvCrash, tvBug, tvOthers) else listOf(tvFeatureQualityFl, tvCrashFl, tvBugFl, tvOtherFl)
             listOption.forEach {
-                it.setOnClickDontDoubleClick {
+                it.setOnClickDontDoubleClick { _ ->
                     it.isSelected = !it.isSelected
                 }
             }
@@ -127,12 +127,7 @@ class FeedbackActivity: AppCompatActivity() {
                 setResult(Activity.RESULT_OK)
                 finish()
             }
-
-
         }
     }
-
-
-
 }
 
