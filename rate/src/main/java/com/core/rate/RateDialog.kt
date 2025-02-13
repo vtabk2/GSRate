@@ -22,6 +22,9 @@ class RateDialog(context: Context) : AlertDialog(context) {
     var onRate: ((star: Int) -> Unit)? = null
     var onBack: (() -> Unit)? = null
     var oldImage : Int = R.drawable.fb_ic_smile_1
+    var onIgnore: (() -> Unit)? = null
+    private var isRated = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
@@ -57,6 +60,7 @@ class RateDialog(context: Context) : AlertDialog(context) {
             ivReview.setOnClickListener {
                 val star = listStar.last { it.isSelected }.tag as Int
                 onRate?.invoke(star + 1)
+                isRated = true
                 dismiss()
             }
 
@@ -89,6 +93,12 @@ class RateDialog(context: Context) : AlertDialog(context) {
                     }
                 }
                 true
+            }
+
+            setOnDismissListener {
+                if(!isRated) {
+                    onIgnore?.invoke()
+                }
             }
         }
 

@@ -109,7 +109,8 @@ class RateInApp {
                 }
             }
 
-            it.onBack = {
+            it.onIgnore = {
+                Log.e(TAG, "showDialogRateAndFeedback: onIgnore", )
                 onIgnoreRate()
             }
         }.show()
