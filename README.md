@@ -14,7 +14,7 @@ dependencyResolutionManagement {
 **Step 2.** Add the dependency
 ```css
 dependencies {
-	        implementation 'com.github.vtabk2:GSrate:1.0.0'
+	        implementation 'com.github.vtabk2:GSrate:1.0.1'
 	}
 ```
 **Requirement:**
@@ -66,6 +66,7 @@ Text hiện tại đang để sp, ai dùng dp thì overide lại:
 	    <dimen name="fb_text_size_feedback_title">25dp</dimen>
         <dimen name="fb_text_size_feedback_matter">15dp</dimen>
         <dimen name="fb_text_size_button_send">20dp</dimen>
+        <dimen name="fb_text_size_button_rate_now">20dp</dimen>
         <dimen name="fb_text_size_title_dialog_thanks">20dp</dimen>
         <dimen name="fb_text_size_title_dialog_feedback">20dp</dimen>
         <dimen name="fb_text_size_body_dialog_thanks">16dp</dimen>
