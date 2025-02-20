@@ -14,7 +14,7 @@ dependencyResolutionManagement {
 **Step 2.** Add the dependency
 ```css
 dependencies {
-	        implementation 'com.github.vtabk2:GSrate:1.0.3'
+	        implementation 'com.github.vtabk2:GSrate:1.0.4'
 	}
 ```
 **Requirement:**
