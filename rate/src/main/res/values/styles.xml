@@ -10,6 +10,22 @@
         <item name="android:src">@drawable/fb_ic_star_selector</item>
     </style>
 
+    <style name="TitleFeedback" parent="BaseTitleFeedback">
+
+    </style>
+
+    <style name="BaseTitleFeedback">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">40dp</item>
+        <item name="android:layout_marginEnd">40dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/fb_feedback_title</item>
+        <item name="android:textColor">@color/fb_feedback_title</item>
+        <item name="android:textSize">@dimen/fb_text_size_feedback_title</item>
+    </style>
+
     <style name="LogoFeedback" parent="BaseLogoFeedback">
 
     </style>
@@ -24,6 +40,7 @@
     </style>
 
     <style name="LogoThanks" parent="BaseLogoThanks">
+
     </style>
 
 
@@ -39,6 +56,7 @@
     <style name="TextMatter" parent="BaseTextMatter">
 
     </style>
+
     <style name="BaseTextMatter">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">10dp</item>
@@ -56,6 +74,18 @@
         <item name="android:textSize">@dimen/fb_text_size_feedback_matter</item>
     </style>
 
-    <style name="FB_TextType"></style>
+    <style name="FB_TextType" parent="BaseTextType">
 
+
+    </style>
+
+    <style name="BaseTextType">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:text">@string/fb_type</item>
+        <item name="android:textColor">@color/fb_text_color_text_type</item>
+        <item name="android:textSize">@dimen/fb_text_size_type</item>
+    </style>
 </resources>

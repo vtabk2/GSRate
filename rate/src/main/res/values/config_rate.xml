@@ -14,6 +14,8 @@
     <dimen name="fb_top_margin_button_submit_feedback">-70dp</dimen>
     <dimen name="fb_bottom_padding_input">75dp</dimen>
     <dimen name="fb_padding_bottom_feedback">30dp</dimen>
+    <dimen name="fb_text_size_best_rate">14sp</dimen>
+    <dimen name="fb_text_size_type">14sp</dimen>
 
     <color name="fb_bg_feedback">#ffffff</color>
     <color name="fb_feedback_title">#000000</color>
@@ -24,6 +26,8 @@
     <color name="fb_text_feedback_matter_unselected">#000000</color>
     <color name="fb_text_feedback_matter_selected">#000000</color>
     <color name="fb_text_color_best_rate">#2CA6FF</color>
+    <color name="fb_bg_input_feedback">#F8F8F8</color>
+    <color name="fb_text_color_text_type">#969696</color>
 
     <bool name="fb_button_submit_feedback_inside_input">false</bool>
     <bool name="fb_show_text_type_in_feedback">false</bool>
