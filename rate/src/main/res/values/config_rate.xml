@@ -16,6 +16,8 @@
     <dimen name="fb_padding_bottom_feedback">30dp</dimen>
     <dimen name="fb_text_size_best_rate">14sp</dimen>
     <dimen name="fb_text_size_type">14sp</dimen>
+    <dimen name="fb_radius_edit_feedback">8dp</dimen>
+    <dimen name="fb_matter_marginTop">10dp</dimen>
 
     <color name="fb_bg_feedback">#ffffff</color>
     <color name="fb_feedback_title">#000000</color>
