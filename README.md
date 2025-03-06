@@ -3,33 +3,33 @@
 **Step 1.** Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
 ```css
-dependencyResolutionManagement {
-		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-		repositories {
-			mavenCentral()
-			maven { url 'https://jitpack.io' }
-		}
-	}
+        dependencyResolutionManagement {
+                repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+                repositories {
+                    mavenCentral()
+                    maven { url 'https://jitpack.io' }
+                }
+            }
 ```
 **Step 2.** Add the dependency
 ```css
-dependencies {
-	        implementation 'com.github.vtabk2:GSRate:1.0.6'
-	}
+        dependencies {
+                    implementation 'com.github.vtabk2:GSRate:1.0.6'
+            }
 ```
 **Requirement:**
 Application:
 
-    RateInApp.instance.registerActivityLifecycle(this)
-    
-    // mặc định isThankForFeedbackGravityBottom = true là view ở dưới màn hình
-    // isThankForFeedbackGravityBottom = false thì sẽ căn giữa màn hình
-    RateInApp.instance.registerActivityLifecycle(this, isThankForFeedbackGravityBottom = false)
+        RateInApp.instance.registerActivityLifecycle(this)
+        
+        // mặc định isThankForFeedbackGravityBottom = true là view ở dưới màn hình
+        // isThankForFeedbackGravityBottom = false thì sẽ căn giữa màn hình
+        RateInApp.instance.registerActivityLifecycle(this, isThankForFeedbackGravityBottom = false)
 
 
 Call Dialog Rate: 
 
-    RateInApp.instance.showDialogRateAndFeedback()
+        RateInApp.instance.showDialogRateAndFeedback()
 
 
 
@@ -46,11 +46,11 @@ Sẽ ko show dialog, nếu vẫn muốn show thì set forceShow = true (dùng kh
 
 **Chặn quảng cáo sau khi feedback**, check thêm điều kiện **isCanShowAppOpen** trước  khi show resume app
 
-    RateInApp.instance.isCanShowAppOpen
+        RateInApp.instance.isCanShowAppOpen
 
 **Edit email feedback**
 
-    <string name="fb_email_feedback" translatable="false">kunkunnapps@gmail.com</string>
+        <string name="fb_email_feedback" translatable="false">kunkunnapps@gmail.com</string>
 
 
 # Custom UI
@@ -105,16 +105,16 @@ Text hiện tại đang để sp, ai dùng dp thì overide lại:
 
 Custom lại style cho icon nếu icon dài:  
 
-    <style name="LogoFeedback">   
-	    <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:adjustViewBounds">true</item>
-        <item name="android:layout_gravity">center_horizontal</item>
-        <item name="android:layout_marginTop">-32dp</item>
-        <item name="android:layout_marginEnd">10dp</item> 
-        <item name="android:layout_marginStart">10dp</item> 
-        <item name="android:src">@drawable/fb_ic_feedback_screen</item>   
-    </style>
+        <style name="LogoFeedback">   
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:layout_width">match_parent</item>
+            <item name="android:adjustViewBounds">true</item>
+            <item name="android:layout_gravity">center_horizontal</item>
+            <item name="android:layout_marginTop">-32dp</item>
+            <item name="android:layout_marginEnd">10dp</item> 
+            <item name="android:layout_marginStart">10dp</item> 
+            <item name="android:src">@drawable/fb_ic_feedback_screen</item>   
+        </style>
     
 3. List các lý do
 - Nếu list dạng 1 thì để mặc định nếu dạng 2 (chipgroup) thì set fb_matter_feedback_flex_ui = true
@@ -152,7 +152,7 @@ Custom lại style cho icon nếu icon dài:
 
 > fb_ic_feedback_thank
 
-** Dialog Thank feedback
+**Dialog Thank feedback**
 > fb_image_header : Custom header của thank feedback
 > fb_show_header_thank_feedback = true để hiển thị header
 
