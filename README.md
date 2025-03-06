@@ -154,5 +154,6 @@ Custom lại style cho icon nếu icon dài:
 
 **Dialog Thank feedback**
 > fb_image_header : Custom header của thank feedback
+
 > fb_show_header_thank_feedback = true để hiển thị header
 
