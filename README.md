@@ -14,13 +14,18 @@ dependencyResolutionManagement {
 **Step 2.** Add the dependency
 ```css
 dependencies {
-	        implementation 'com.github.vtabk2:GSRate:1.0.5'
+	        implementation 'com.github.vtabk2:GSRate:1.0.6'
 	}
 ```
 **Requirement:**
 Application:
 
     RateInApp.instance.registerActivityLifecycle(this)
+    
+    // mặc định isThankForFeedbackGravityBottom = true là view ở dưới màn hình
+    // isThankForFeedbackGravityBottom = false thì sẽ căn giữa màn hình
+    RateInApp.instance.registerActivityLifecycle(this, isThankForFeedbackGravityBottom = false)
+
 
 Call Dialog Rate: 
 
@@ -146,4 +151,8 @@ Custom lại style cho icon nếu icon dài:
 - icon nút thanks, có thể custom lại imageView bằng style LogoThanks
 
 > fb_ic_feedback_thank
+
+** Dialog Thank feedback
+> fb_image_header : Custom header của thank feedback
+> fb_show_header_thank_feedback = true để hiển thị header
 
