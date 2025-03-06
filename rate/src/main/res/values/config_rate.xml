@@ -18,6 +18,7 @@
     <dimen name="fb_text_size_type">14sp</dimen>
     <dimen name="fb_radius_edit_feedback">8dp</dimen>
     <dimen name="fb_matter_marginTop">10dp</dimen>
+    <dimen name="fb_thank_feedback_title_marginTop">20dp</dimen>
 
     <color name="fb_bg_feedback">#ffffff</color>
     <color name="fb_feedback_title">#000000</color>
@@ -34,8 +35,10 @@
     <bool name="fb_button_submit_feedback_inside_input">false</bool>
     <bool name="fb_show_text_type_in_feedback">false</bool>
     <bool name="fb_matter_feedback_flex_ui">false</bool>
+    <bool name="fb_show_header_thank_feedback">false</bool>
 
     <drawable name="fb_bg_click_star">@drawable/fb__bg_click_star</drawable>
+    <drawable name="fb_image_header">@drawable/fb__image_header</drawable>
     <drawable name="fb_bg_dialog_review">@drawable/fb__bg_dialog_review</drawable>
     <drawable name="fb_bg_dialog_thanks">@drawable/fb__bg_dialog_thanks</drawable>
     <drawable name="fb_bg_edit_feedback">@drawable/fb__bg_edit_feedback</drawable>

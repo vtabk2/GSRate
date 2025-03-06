@@ -12,7 +12,6 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.core.rate.feedback.FeedbackActivity
 
 class RateInApp {
@@ -29,7 +28,7 @@ class RateInApp {
     private var intentActivity = HashMap<Int, ActivityResultLauncher<Intent>>()
 
     // Call this method in onCreate() of Application
-    fun registerActivityLifecycle(application: Application) {
+    fun registerActivityLifecycle(application: Application, isThankForFeedbackGravityBottom: Boolean = true) {
         application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 Log.e(TAG, "onActivityCreated: ${activity::class.java.simpleName}")
@@ -47,7 +46,11 @@ class RateInApp {
                 if (activity !is FeedbackActivity) {
                     isCanShowAppOpen = true
                     if (isShowThanks && activity is AppCompatActivity) {
-                        ThankForFeedbackDialog().show(activity.supportFragmentManager, "thanks")
+                        if (isThankForFeedbackGravityBottom) {
+                            ThankForFeedbackDialog().show(activity.supportFragmentManager, "thanks")
+                        } else {
+                            ThankForFeedbackCenterDialog(activity).show()
+                        }
                         isShowThanks = false
                     }
                 }
