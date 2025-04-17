@@ -64,14 +64,15 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvOk"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/fb_button_thank_height"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/fb_bg_rate_us_button"
                 android:enabled="true"
                 android:gravity="center"
-                android:paddingVertical="15dp"
                 android:text="@string/fb_thanks"
                 android:textColor="#ffffff"
                 android:textSize="@dimen/fb_text_size_button_send"/>

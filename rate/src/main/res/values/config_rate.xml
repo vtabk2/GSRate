@@ -19,6 +19,9 @@
     <dimen name="fb_radius_edit_feedback">8dp</dimen>
     <dimen name="fb_matter_marginTop">10dp</dimen>
     <dimen name="fb_thank_feedback_title_marginTop">20dp</dimen>
+    <dimen name="fb_button_send_height">48dp</dimen>
+    <dimen name="fb_button_rate_now_height">48dp</dimen>
+    <dimen name="fb_button_thank_height">48dp</dimen>
 
     <color name="fb_bg_feedback">#ffffff</color>
     <color name="fb_feedback_title">#000000</color>
