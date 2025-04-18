@@ -175,4 +175,6 @@ Custom lại style cho icon nếu icon dài:
 ```css
         RateInApp.instance.isThankForFeedbackGravityBottom = true
 ```
+- Đổi ThankForFeedbackDialog thành ThankForFeedbackBottomDialog
+
 

@@ -28,7 +28,7 @@ class RateDialog(context: Context) : AlertDialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
-        mViewBinding.run {
+        mViewBinding.apply {
             val listStar = listOf(
                 ivStar1,
                 ivStar2,

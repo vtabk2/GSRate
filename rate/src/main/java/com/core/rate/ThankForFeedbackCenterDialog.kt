@@ -14,7 +14,7 @@ class ThankForFeedbackCenterDialog(context: Context) : AlertDialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
-        mViewBinding.run {
+        mViewBinding.apply {
             val showHeader = context.resources.getBoolean(R.bool.fb_show_header_thank_feedback)
             imageHeader.visibility = if (showHeader) View.VISIBLE else View.GONE
 

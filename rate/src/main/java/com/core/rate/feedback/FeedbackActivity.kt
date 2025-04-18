@@ -82,7 +82,7 @@ class FeedbackActivity: AppCompatActivity() {
             _viewBinding.actionBar.setPadding(0, displayCutout(), 0, 0)
         }
 
-        _viewBinding.run {
+        _viewBinding.apply {
             ivBack.setOnClickListener {
                 finish()
             }

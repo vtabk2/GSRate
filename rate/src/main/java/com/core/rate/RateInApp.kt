@@ -49,7 +49,7 @@ class RateInApp {
                     isCanShowAppOpen = true
                     if (isShowThanks && activity is AppCompatActivity) {
                         if (isThankForFeedbackGravityBottom) {
-                            ThankForFeedbackDialog().show(activity.supportFragmentManager, "thanks")
+                            ThankForFeedbackBottomDialog().show(activity.supportFragmentManager, "thanks")
                         } else {
                             ThankForFeedbackCenterDialog(activity).show()
                         }
