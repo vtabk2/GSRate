@@ -72,7 +72,9 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                         imageArrow.visibility = View.VISIBLE
                         imageOval.visibility = View.VISIBLE
                     }
+                    tvMessage.visibility = View.VISIBLE
                     tvTitle.setText(getTextTitle(view.tag as Int))
+                    tvMessage.setText(getTextMessage(view.tag as Int))
                     oldImage = smileIcon
                     tvReview.setText(getTextButton(view.tag as Int))
                 }
@@ -107,9 +109,17 @@ class RateBottomDialog : BottomSheetDialogFragment() {
 
     private fun getTextTitle(star: Int): Int {
         return when (star) {
-            0, 1, 2, 3 -> R.string.fb_rate_us_bad
-            4 -> R.string.fb_rate_us_good
-            else -> R.string.fb_rate_us_default
+            0, 1, 2, 3 -> R.string.fb_rate_bottom_bad
+            4 -> R.string.fb_rate_bottom_good
+            else -> R.string.fb_rate_bottom_default
+        }
+    }
+
+    private fun getTextMessage(star: Int): Int {
+        return when (star) {
+            0, 1, 2, 3 -> R.string.fb_rate_bottom_mess_bad
+            4 -> R.string.fb_rate_bottom_mess_good
+            else -> 0
         }
     }
 
