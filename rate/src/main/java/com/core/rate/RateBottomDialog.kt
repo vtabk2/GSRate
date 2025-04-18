@@ -1,8 +1,5 @@
 package com.core.rate
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.app.Dialog
 import android.content.DialogInterface
 import android.graphics.Color
@@ -10,7 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.view.isVisible
 import com.core.rate.databinding.FbDialogRateBottomBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -59,15 +55,15 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                     val smileIcon = getSmileIcon(view.tag as Int)
                     if (ivSmile.isVisible) {
                         if (smileIcon != oldImage) {
-                            animateIconChange(ivSmile, smileIcon)
+                            ivSmile.setImageResource(smileIcon)
                         }
                     } else {
                         ivSmile.visibility = View.VISIBLE
                         ivSmile.setImageResource(smileIcon)
                     }
                     if (view.tag as Int == 5) {
-                        imageArrow.visibility = View.GONE
-                        imageOval.visibility = View.GONE
+                        imageArrow.visibility = View.INVISIBLE
+                        imageOval.visibility = View.INVISIBLE
                     } else {
                         imageArrow.visibility = View.VISIBLE
                         imageOval.visibility = View.VISIBLE
@@ -129,22 +125,5 @@ class RateBottomDialog : BottomSheetDialogFragment() {
             4 -> R.string.fb_rate_on_google_play
             else -> R.string.fb_feedback_rate
         }
-    }
-
-    private fun animateIconChange(imageView: ImageView, newIcon: Int) {
-        val fadeOut = ObjectAnimator.ofFloat(imageView, "alpha", 1f, 0f)
-        val fadeIn = ObjectAnimator.ofFloat(imageView, "alpha", 0f, 1f)
-
-        fadeOut.duration = 200
-        fadeIn.duration = 200
-
-        fadeOut.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                imageView.setImageResource(newIcon)
-                fadeIn.start()
-            }
-        })
-
-        fadeOut.start()
     }
 }
