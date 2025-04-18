@@ -55,7 +55,7 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                     listStar.forEach {
                         it.isSelected = it.tag as Int <= view.tag as Int
                     }
-                    ivReview.isEnabled = true
+                    tvReview.isEnabled = true
                     val smileIcon = getSmileIcon(view.tag as Int)
                     if (ivSmile.isVisible) {
                         if (smileIcon != oldImage) {
@@ -67,11 +67,11 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                     }
                     tvTitle.setText(getTextTitle(view.tag as Int))
                     oldImage = smileIcon
-                    ivReview.setText(getTextButton(view.tag as Int))
+                    tvReview.setText(getTextButton(view.tag as Int))
                 }
             }
 
-            ivReview.setOnClickListener {
+            tvReview.setOnClickListener {
                 val star = listStar.last { it.isSelected }.tag as Int
                 onRate?.invoke(star + 1)
                 isRated = true

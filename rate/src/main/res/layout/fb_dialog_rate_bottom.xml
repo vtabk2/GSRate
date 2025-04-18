@@ -23,12 +23,15 @@
         android:layout_height="wrap_content"
         android:background="@drawable/fb_bg_dialog_review"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="30dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="17dp">
 
         <FrameLayout
             android:id="@+id/lnTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            app:layout_constraintBottom_toTopOf="@id/tvDescription"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -40,22 +43,37 @@
                 android:lineSpacingExtra="3dp"
                 android:text="@string/fb_rate_us_default"
                 android:textColor="@color/fb_feedback_title"
-                android:textSize="@dimen/fb_text_size_title_dialog_feedback"/>
+                android:textSize="@dimen/fb_text_size_title_dialog_feedback"
+                android:textStyle="bold"/>
         </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="22dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/fb_best_rate"
+            android:textColor="@color/fb_text_color_best_rate"
+            android:textSize="@dimen/fb_text_size_best_rate"
+            app:layout_constraintBottom_toTopOf="@+id/lnStar"
+            app:layout_constraintEnd_toEndOf="@id/lnStar"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lnStar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/lottieStar"
+            app:layout_constraintBottom_toTopOf="@id/tvReview"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/lottieStar">
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar1"
-                style="@style/StarImage"
+                style="@style/StarImageBottom"
                 android:layout_marginEnd="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ivStar2"
@@ -64,7 +82,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar2"
-                style="@style/StarImage"
+                style="@style/StarImageBottom"
                 android:layout_marginEnd="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ivStar3"
@@ -73,7 +91,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar3"
-                style="@style/StarImage"
+                style="@style/StarImageBottom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +100,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar4"
-                style="@style/StarImage"
+                style="@style/StarImageBottom"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivStar3"
@@ -91,69 +109,17 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar5"
-                style="@style/StarImage"
+                style="@style/StarImageBottom"
                 android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivStar4"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible"/>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivEndStar1"
-                android:layout_width="12dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:adjustViewBounds="true"
-                android:scaleX="@integer/scaleX_rtl"
-                android:src="@drawable/fb_ic_end_star"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="@+id/ivStar5"
-                app:layout_constraintTop_toTopOf="parent"/>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieStar"
-            android:layout_width="350dp"
-            android:layout_height="109dp"
-            android:adjustViewBounds="true"
-            android:scaleX="@integer/scaleX_rtl"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lnTitle"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="false"
-            app:lottie_rawRes="@raw/rate"/>
-
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="13dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/fb_best_rate"
-            android:textColor="@color/fb_text_color_best_rate"
-            android:textSize="@dimen/fb_text_size_best_rate"
-            app:layout_constraintEnd_toStartOf="@+id/ivHand"
-            app:layout_constraintStart_toStartOf="@id/lnStar"
-            app:layout_constraintTop_toBottomOf="@+id/lnStar"/>
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivHand"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleX="@integer/scaleX_rtl"
-            android:src="@drawable/fb_ic_hand"
-            app:layout_constraintBottom_toBottomOf="@+id/tvDescription"
-            app:layout_constraintEnd_toEndOf="@id/lnStar"
-            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-            app:layout_constraintTop_toTopOf="@+id/tvDescription"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/ivReview"
+            android:id="@+id/tvReview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/fb_button_rate_now_height"
             android:layout_marginTop="25dp"
@@ -165,8 +131,6 @@
             android:text="@string/fb_feedback_rate"
             android:textColor="#ffffff"
             android:textSize="@dimen/fb_text_size_button_rate_now"
-            app:layout_constraintTop_toBottomOf="@+id/ivHand"/>
-
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.appcompat.widget.LinearLayoutCompat>

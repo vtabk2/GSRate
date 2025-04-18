@@ -10,6 +10,10 @@
         <item name="android:src">@drawable/fb_ic_star_selector</item>
     </style>
 
+    <style name="StarImageBottom" parent="StarImage">
+        <item name="android:visibility">visible</item>
+    </style>
+
     <style name="TitleFeedback" parent="BaseTitleFeedback">
 
     </style>
