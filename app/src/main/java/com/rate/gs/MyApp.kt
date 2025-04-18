@@ -8,5 +8,6 @@ class MyApp: Application() {
         super.onCreate()
         RateInApp.instance.registerActivityLifecycle(this)
         RateInApp.instance.isThankForFeedbackGravityBottom = false
+        RateInApp.instance.isRateGravityBottom = true
     }
 }

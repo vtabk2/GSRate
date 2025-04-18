@@ -25,6 +25,7 @@ class RateInApp {
     private var onResult: ((ActivityResult) -> Unit)? = null
     var isCanShowAppOpen = true
     var isShowThanks = false
+    var isRateGravityBottom = false
     var isThankForFeedbackGravityBottom = true
 
     private var intentActivity = HashMap<Int, ActivityResultLauncher<Intent>>()
@@ -83,7 +84,7 @@ class RateInApp {
     }
 
     fun showDialogRateAndFeedback(
-        context: ComponentActivity,
+        context: AppCompatActivity,
         onShowDialogRate: () -> Unit = {}, // Show dialog rate
         onRated: (star: Int) -> Unit = {}, // User click Rate
         onIgnoreRate: () -> Unit = {}, // Khi user không click vào rate mà click back
@@ -92,33 +93,51 @@ class RateInApp {
         onShowThanks: () -> Boolean = { false }, // return true nếu muốn tự xử lý rate( show in-app review hoặc nhảy sang play store), mặc định sẽ nhảy sang play store
         forceShow: Boolean = false
     ) {
-        if (!isInternetAvailable(context) && !forceShow) return
-        RateDialog(context).also {
-            onShowDialogRate()
-            it.onRate = { star ->
-                onRated(star)
-                if (star == 5) {
-                    context.rateApp(inAppReview = inAppReview)
-                } else {
-                    isCanShowAppOpen = false
-                    showActivityFeedback(context = context) { result ->
-                        if (result.resultCode == Activity.RESULT_OK) {
-                            if(!onShowThanks()) {
-                                isShowThanks = true
-                            }
-                            Log.e(TAG, "showFeedback: true")
-                        } else {
-                            Log.e(TAG, "showFeedback: false")
+        fun rateStar(star: Int) {
+            onRated(star)
+            if (star == 5) {
+                context.rateApp(inAppReview = inAppReview)
+            } else {
+                isCanShowAppOpen = false
+                showActivityFeedback(context = context) { result ->
+                    if (result.resultCode == Activity.RESULT_OK) {
+                        if (!onShowThanks()) {
+                            isShowThanks = true
                         }
+                        Log.e(TAG, "showFeedback: true")
+                    } else {
+                        Log.e(TAG, "showFeedback: false")
                     }
                 }
             }
+        }
 
-            it.onIgnore = {
-                Log.e(TAG, "showDialogRateAndFeedback: onIgnore", )
-                onIgnoreRate()
-            }
-        }.show()
+        if (!isInternetAvailable(context) && !forceShow) return
+        if (isRateGravityBottom) {
+            RateBottomDialog().also {
+                onShowDialogRate()
+                it.onRate = { star ->
+                    rateStar(star = star)
+                }
+
+                it.onIgnore = {
+                    Log.e(TAG, "showDialogRateAndFeedback: onIgnore")
+                    onIgnoreRate()
+                }
+            }.show(context.supportFragmentManager, "rate_bottom")
+        } else {
+            RateCenterDialog(context).also {
+                onShowDialogRate()
+                it.onRate = { star ->
+                    rateStar(star = star)
+                }
+
+                it.onIgnore = {
+                    Log.e(TAG, "showDialogRateAndFeedback: onIgnore")
+                    onIgnoreRate()
+                }
+            }.show()
+        }
         alwaysIgnore()
     }
 
