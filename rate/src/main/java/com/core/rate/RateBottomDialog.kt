@@ -6,15 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.core.rate.databinding.FbDialogThankFeedbackBinding
+import com.core.rate.databinding.FbDialogRateBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ThankForFeedbackDialog : BottomSheetDialogFragment() {
-    private lateinit var mViewBinding : FbDialogThankFeedbackBinding
+class RateBottomDialog : BottomSheetDialogFragment() {
+    private lateinit var mViewBinding: FbDialogRateBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        mViewBinding = FbDialogThankFeedbackBinding.inflate(inflater, container, false)
+        mViewBinding = FbDialogRateBinding.inflate(inflater, container, false)
         return mViewBinding.root
     }
 
@@ -31,10 +31,7 @@ class ThankForFeedbackDialog : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val showHeader = resources.getBoolean(R.bool.fb_show_header_thank_feedback)
-        mViewBinding.imageHeader.visibility = if (showHeader) View.VISIBLE else View.GONE
-
-        mViewBinding.tvOk.setOnClickListener {
+        mViewBinding.tvReview.setOnClickListener {
             dismiss()
         }
     }

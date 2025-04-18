@@ -25,10 +25,12 @@ class RateInApp {
     private var onResult: ((ActivityResult) -> Unit)? = null
     var isCanShowAppOpen = true
     var isShowThanks = false
+    var isRateGravityBottom = false
+    var isThankForFeedbackGravityBottom = false
     private var intentActivity = HashMap<Int, ActivityResultLauncher<Intent>>()
 
     // Call this method in onCreate() of Application
-    fun registerActivityLifecycle(application: Application, isThankForFeedbackGravityBottom: Boolean = true) {
+    fun registerActivityLifecycle(application: Application) {
         application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 Log.e(TAG, "onActivityCreated: ${activity::class.java.simpleName}")
@@ -91,32 +93,36 @@ class RateInApp {
         forceShow: Boolean = false
     ) {
         if (!isInternetAvailable(context) && !forceShow) return
-        RateDialog(context).also {
-            onShowDialogRate()
-            it.onRate = { star ->
-                onRated(star)
-                if (star == 5) {
-                    context.rateApp(inAppReview = inAppReview)
-                } else {
-                    isCanShowAppOpen = false
-                    showActivityFeedback(context = context) { result ->
-                        if (result.resultCode == Activity.RESULT_OK) {
-                            if(!onShowThanks()) {
-                                isShowThanks = true
+        if (isRateGravityBottom) {
+
+        } else {
+            RateDialog(context).also {
+                onShowDialogRate()
+                it.onRate = { star ->
+                    onRated(star)
+                    if (star == 5) {
+                        context.rateApp(inAppReview = inAppReview)
+                    } else {
+                        isCanShowAppOpen = false
+                        showActivityFeedback(context = context) { result ->
+                            if (result.resultCode == Activity.RESULT_OK) {
+                                if (!onShowThanks()) {
+                                    isShowThanks = true
+                                }
+                                Log.e(TAG, "showFeedback: true")
+                            } else {
+                                Log.e(TAG, "showFeedback: false")
                             }
-                            Log.e(TAG, "showFeedback: true")
-                        } else {
-                            Log.e(TAG, "showFeedback: false")
                         }
                     }
                 }
-            }
 
-            it.onIgnore = {
-                Log.e(TAG, "showDialogRateAndFeedback: onIgnore", )
-                onIgnoreRate()
-            }
-        }.show()
+                it.onIgnore = {
+                    Log.e(TAG, "showDialogRateAndFeedback: onIgnore")
+                    onIgnoreRate()
+                }
+            }.show()
+        }
         alwaysIgnore()
     }
 

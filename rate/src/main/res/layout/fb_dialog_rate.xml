@@ -159,7 +159,7 @@
             app:layout_constraintTop_toTopOf="@+id/tvDescription" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/ivReview"
+            android:id="@+id/tvReview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/fb_button_rate_now_height"
             android:layout_marginTop="25dp"
