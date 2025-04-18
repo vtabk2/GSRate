@@ -51,15 +51,24 @@
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="22dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:gravity="end"
-            android:text="@string/fb_best_rate"
+            android:text="@string/fb_best_rating_for_us"
             android:textColor="@color/fb_text_color_best_rate"
             android:textSize="@dimen/fb_text_size_best_rate"
-            app:layout_constraintBottom_toTopOf="@+id/lnStar"
-            app:layout_constraintEnd_toEndOf="@id/lnStar"/>
+            app:layout_constraintBottom_toTopOf="@+id/imageArrow"
+            app:layout_constraintEnd_toStartOf="@id/imageArrow"
+            app:layout_constraintStart_toStartOf="@id/lnStar"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toTopOf="@id/lnStar"
+            app:layout_constraintEnd_toEndOf="@id/lnStar"
+            app:srcCompat="@drawable/fb_ic_arrow"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lnStar"
@@ -116,6 +125,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:visibility="visible"/>
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageOval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/ivStar5"
+                app:layout_constraintEnd_toEndOf="@id/ivStar5"
+                app:layout_constraintStart_toStartOf="@id/ivStar5"
+                app:layout_constraintTop_toTopOf="@id/ivStar5"
+                app:srcCompat="@drawable/fb_ic_oval"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatTextView

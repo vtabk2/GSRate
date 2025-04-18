@@ -65,6 +65,13 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                         ivSmile.visibility = View.VISIBLE
                         ivSmile.setImageResource(smileIcon)
                     }
+                    if (view.tag as Int == 5) {
+                        imageArrow.visibility = View.GONE
+                        imageOval.visibility = View.GONE
+                    } else {
+                        imageArrow.visibility = View.VISIBLE
+                        imageOval.visibility = View.VISIBLE
+                    }
                     tvTitle.setText(getTextTitle(view.tag as Int))
                     oldImage = smileIcon
                     tvReview.setText(getTextButton(view.tag as Int))

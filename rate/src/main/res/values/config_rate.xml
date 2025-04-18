@@ -57,6 +57,8 @@
     <drawable name="fb_ic_smile_3">@drawable/fb__ic_smile_3</drawable>
     <drawable name="fb_ic_smile_4">@drawable/fb__ic_smile_4</drawable>
     <drawable name="fb_ic_smile_5">@drawable/fb__ic_smile_5</drawable>
+    <drawable name="fb_ic_oval">@drawable/fb__ic_oval</drawable>
+    <drawable name="fb_ic_arrow">@drawable/fb__ic_arrow</drawable>
     <drawable name="fb_ic_star">@drawable/fb__ic_star</drawable>
     <drawable name="fb_ic_star_fill">@drawable/fb__ic_star_fill</drawable>
     <drawable name="fb_ic_star_selector">@drawable/fb__ic_star_selector</drawable>
