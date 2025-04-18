@@ -25,10 +25,12 @@ class RateInApp {
     private var onResult: ((ActivityResult) -> Unit)? = null
     var isCanShowAppOpen = true
     var isShowThanks = false
+    var isThankForFeedbackGravityBottom = true
+
     private var intentActivity = HashMap<Int, ActivityResultLauncher<Intent>>()
 
     // Call this method in onCreate() of Application
-    fun registerActivityLifecycle(application: Application, isThankForFeedbackGravityBottom: Boolean = true) {
+    fun registerActivityLifecycle(application: Application) {
         application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 Log.e(TAG, "onActivityCreated: ${activity::class.java.simpleName}")

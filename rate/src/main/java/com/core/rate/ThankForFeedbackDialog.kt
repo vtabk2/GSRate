@@ -13,11 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class ThankForFeedbackDialog : BottomSheetDialogFragment() {
     private lateinit var mViewBinding : FbDialogThankFeedbackBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mViewBinding = FbDialogThankFeedbackBinding.inflate(inflater, container, false)
         return mViewBinding.root
     }

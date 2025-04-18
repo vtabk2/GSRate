@@ -24,7 +24,7 @@ Application:
         
         // mặc định isThankForFeedbackGravityBottom = true là view ở dưới màn hình
         // isThankForFeedbackGravityBottom = false thì sẽ căn giữa màn hình
-        RateInApp.instance.registerActivityLifecycle(this, isThankForFeedbackGravityBottom = false)
+        RateInApp.instance.isThankForFeedbackGravityBottom = false
 
 
 Call Dialog Rate: 
@@ -156,4 +156,23 @@ Custom lại style cho icon nếu icon dài:
 > fb_image_header : Custom header của thank feedback
 
 > fb_show_header_thank_feedback = true để hiển thị header
+
+# Cập nhật
+
+**Version 1.0.7**
+
+- Chuyển isThankForFeedbackGravityBottom ra ngoài registerActivityLifecycle
+- Khởi tạo
+
+> nếu muốn ở giữa màn hình
+
+```css
+        RateInApp.instance.isThankForFeedbackGravityBottom = false
+```
+
+> nếu muốn ở dưới màn hình(mặc định)
+
+```css
+        RateInApp.instance.isThankForFeedbackGravityBottom = true
+```
 
