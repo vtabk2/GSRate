@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="fb_text_size_feedback_title">20sp</dimen>
+    <dimen name="fb_text_size_button_rate_now">18sp</dimen>
+    <dimen name="fb_text_size_button_send">18sp</dimen>
+    <dimen name="fb_text_size_type">15sp</dimen>
+    <dimen name="fb_radius_submit_size">41dp</dimen>
+    <dimen name="fb_padding_bottom_feedback">17dp</dimen>
+    <dimen name="fb_top_margin_button_submit_feedback">-60dp</dimen>
+    <dimen name="fb_button_feedback_matter_radius">20dp</dimen>
+    <dimen name="fb_thank_feedback_title_marginTop">15dp</dimen>
+
+    <color name="fb_color_button_submit_enable">#2AA4EA</color>
+    <color name="fb_color_button_submit_disable">#AAAFB3</color>
+
+    <color name="fb_text_color_best_rate">#2AA4EA</color>
+
+    <color name="fb_bg_feedback_matter_selected">#000000</color>
+    <color name="fb_bg_feedback_matter_unselected">#EFF3F6</color>
+    <color name="fb_bg_input_feedback">#EFF3F6</color>
+    <color name="fb_text_feedback_matter_unselected">#000000</color>
+    <color name="fb_text_feedback_matter_selected">#ffffff</color>
+
+    <bool name="fb_button_submit_feedback_inside_input">true</bool>
+    <bool name="fb_show_text_type_in_feedback">true</bool>
+    <bool name="fb_matter_feedback_flex_ui">true</bool>
+
+    <drawable name="fb_ic_hand">@drawable/fb___ic_hand</drawable>
+    <drawable name="fb_ic_feedback_screen">@drawable/fb___ic_feedback_screen</drawable>
+    <drawable name="fb_ic_feedback_thank">@drawable/fb___ic_feedback_thank</drawable>
+
+    <string name="fb_email_feedback" translatable="false">highsecure.photokeypad@gmail.com</string>
+
+    <style name="TitleFeedback" parent="BaseTitleFeedback">
+        <item name="android:layout_marginStart">17dp</item>
+        <item name="android:layout_marginEnd">17dp</item>
+        <item name="android:layout_marginTop">13dp</item>
+    </style>
+
+    <style name="LogoFeedback" parent="BaseLogoFeedback">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+
+    <style name="FB_TextType" parent="BaseTextType">
+        <item name="android:layout_marginStart">17dp</item>
+    </style>
+
+    <style name="TextMatter" parent="BaseTextMatter">
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+    </style>
+
+    <style name="LogoThanks" parent="BaseLogoThanks">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">14dp</item>
+    </style>
+</resources>
