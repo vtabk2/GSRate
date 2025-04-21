@@ -98,17 +98,10 @@ class RateInApp {
             if (star == 5) {
                 context.rateApp(inAppReview = inAppReview)
             } else {
-                isCanShowAppOpen = false
-                showActivityFeedback(context = context) { result ->
-                    if (result.resultCode == Activity.RESULT_OK) {
-                        if (!onShowThanks()) {
-                            isShowThanks = true
-                        }
-                        Log.e(TAG, "showFeedback: true")
-                    } else {
-                        Log.e(TAG, "showFeedback: false")
-                    }
-                }
+                showFeedback(
+                    context = context,
+                    onShowThanks = onShowThanks
+                )
             }
         }
 
@@ -139,6 +132,23 @@ class RateInApp {
             }.show()
         }
         alwaysIgnore()
+    }
+
+    fun showFeedback(
+        context: Context,
+        onShowThanks: () -> Boolean = { false }
+    ) {
+        isCanShowAppOpen = false
+        showActivityFeedback(context = context) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                if (!onShowThanks()) {
+                    isShowThanks = true
+                }
+                Log.e(TAG, "showFeedback: true")
+            } else {
+                Log.e(TAG, "showFeedback: false")
+            }
+        }
     }
 
     // Call this method in onCreate() of Activity

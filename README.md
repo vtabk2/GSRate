@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:1.0.7'
+                    implementation 'com.github.vtabk2:GSRate:1.0.8'
             }
 ```
 **Requirement:**
@@ -34,7 +34,15 @@ Call Dialog Rate:
 
         RateInApp.instance.showDialogRateAndFeedback()
 
-
+        RateInApp.instance.showDialogRateAndFeedback(
+                    context = this@BaseSmallEditActivity,
+                    onRated = { star ->
+                        config.rating = true
+                    },
+                    onIgnoreRate = {
+                        config.isRateLater = true
+                    }
+                )
 
 **Flow**
 
@@ -162,6 +170,9 @@ Custom lại style cho icon nếu icon dài:
 
 # Phiên bản cập nhật
 
+**Version 1.0.8**
+
+- Thêm showFeedback để gọi màn hình feedback luôn
 **Version 1.0.7**
 
 - Chuyển isThankForFeedbackGravityBottom ra ngoài registerActivityLifecycle
