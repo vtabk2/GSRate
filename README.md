@@ -188,5 +188,8 @@ Custom lại style cho icon nếu icon dài:
 ```css
         RateInApp.instance.isRateGravityBottom = false
 ```
+- Cấu hình cho trạng thái khi chọn sao
 
+>    FB_SmileImage cho rate dialog ở giữa màn hình
+>    FB_SmileImageBottom cho rate dialog ở dưới màn hình
 
