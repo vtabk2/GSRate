@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:1.0.8'
+                    implementation 'com.github.vtabk2:GSRate:1.0.9'
             }
 ```
 **Requirement:**
@@ -169,6 +169,8 @@ Custom lại style cho icon nếu icon dài:
 > fb_show_header_thank_feedback = true để hiển thị header
 
 # Phiên bản cập nhật
+**Version 1.0.9**
+- Thêm fb_dialog_rate_bottom_height thay đổi kích thước rate dialog bottom để không bị nhảy màn hình
 
 **Version 1.0.8**
 

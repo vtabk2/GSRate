@@ -22,6 +22,7 @@
     <dimen name="fb_button_send_height">48dp</dimen>
     <dimen name="fb_button_rate_now_height">48dp</dimen>
     <dimen name="fb_button_thank_height">48dp</dimen>
+    <dimen name="fb_dialog_rate_bottom_height">160dp</dimen>
 
     <color name="fb_bg_feedback">#ffffff</color>
     <color name="fb_feedback_title">#000000</color>

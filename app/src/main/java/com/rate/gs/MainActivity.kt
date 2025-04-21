@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val button = Button(this)
         button.text = "Feedback"
         button.setOnClickListener {
-            RateInApp.instance.showDialogRateAndFeedback(context = this)
+            RateInApp.instance.showDialogRateAndFeedback(context = this, forceShow = true)
         }
 
         val button2 = Button(this)
