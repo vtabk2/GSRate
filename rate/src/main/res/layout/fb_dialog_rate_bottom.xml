@@ -54,7 +54,7 @@
                 android:maxLines="6"
                 android:text="@string/fb_rate_bottom_default"
                 android:textColor="@color/fb_feedback_title"
-                android:textSize="@dimen/fb_text_size_title_dialog_feedback"
+                android:textSize="@dimen/fb_text_size_title_dialog_rate_bottom"
                 android:textStyle="bold"/>
 
             <androidx.appcompat.widget.AppCompatTextView

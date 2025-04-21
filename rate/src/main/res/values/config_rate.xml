@@ -4,6 +4,8 @@
     <dimen name="fb_text_size_feedback_matter">15sp</dimen>
     <dimen name="fb_text_size_button_send">20sp</dimen>
     <dimen name="fb_text_size_button_rate_now">20sp</dimen>
+    <dimen name="fb_text_size_title_dialog_rate">20sp</dimen>
+    <dimen name="fb_text_size_title_dialog_rate_bottom">19sp</dimen>
     <dimen name="fb_text_size_title_dialog_thanks">20sp</dimen>
     <dimen name="fb_text_size_title_dialog_feedback">20sp</dimen>
     <dimen name="fb_text_size_body_dialog_thanks">16sp</dimen>

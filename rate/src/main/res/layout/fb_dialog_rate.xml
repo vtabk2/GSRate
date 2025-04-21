@@ -36,7 +36,7 @@
                 android:lineSpacingExtra="3dp"
                 android:text="@string/fb_rate_us_default"
                 android:textColor="@color/fb_feedback_title"
-                android:textSize="@dimen/fb_text_size_title_dialog_feedback"/>
+                android:textSize="@dimen/fb_text_size_title_dialog_rate"/>
         </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
