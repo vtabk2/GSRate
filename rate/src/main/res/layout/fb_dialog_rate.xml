@@ -9,15 +9,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivSmile"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/fb_ic_smile_1"
-        android:visibility="invisible"
+        style="@style/FB_SmileImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fb_ic_smile_1"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

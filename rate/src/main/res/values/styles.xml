@@ -92,4 +92,20 @@
         <item name="android:textColor">@color/fb_text_color_text_type</item>
         <item name="android:textSize">@dimen/fb_text_size_type</item>
     </style>
+
+    <style name="FB_SmileImage" parent="BaseSmileImage">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="FB_SmileImageBottom" parent="BaseSmileImage">
+
+    </style>
+
+    <style name="BaseSmileImage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
 </resources>

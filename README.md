@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:1.0.6'
+                    implementation 'com.github.vtabk2:GSRate:1.0.7'
             }
 ```
 **Requirement:**
@@ -25,6 +25,9 @@ Application:
         // mặc định isThankForFeedbackGravityBottom = true là view ở dưới màn hình
         // isThankForFeedbackGravityBottom = false thì sẽ căn giữa màn hình
         RateInApp.instance.isThankForFeedbackGravityBottom = false
+        // isRateGravityBottom = true view rate ở dưới màn hình
+        // isRateGravityBottom = false là mặc định ở giữa màn hình
+        RateInApp.instance.isRateGravityBottom = true
 
 
 Call Dialog Rate: 
@@ -157,7 +160,7 @@ Custom lại style cho icon nếu icon dài:
 
 > fb_show_header_thank_feedback = true để hiển thị header
 
-# Cập nhật
+# Phiên bản cập nhật
 
 **Version 1.0.7**
 
@@ -176,5 +179,14 @@ Custom lại style cho icon nếu icon dài:
         RateInApp.instance.isThankForFeedbackGravityBottom = true
 ```
 - Đổi ThankForFeedbackDialog thành ThankForFeedbackBottomDialog
+- Thêm isRateGravityBottom để cấu hình vị trí rate dialog
+> nếu muốn ở dưới màn hình
+```css
+        RateInApp.instance.isRateGravityBottom = true
+```
+> nếu muốn ở giữa màn hình(mặc định)
+```css
+        RateInApp.instance.isRateGravityBottom = false
+```
 
 
