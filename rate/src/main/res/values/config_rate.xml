@@ -43,6 +43,7 @@
     <drawable name="fb_bg_click_star">@drawable/fb__bg_click_star</drawable>
     <drawable name="fb_image_header">@drawable/fb__image_header</drawable>
     <drawable name="fb_bg_dialog_review">@drawable/fb__bg_dialog_review</drawable>
+    <drawable name="fb_bg_dialog_bottom_rate">@drawable/fb__bg_dialog_bottom_rate</drawable>
     <drawable name="fb_bg_dialog_thanks">@drawable/fb__bg_dialog_thanks</drawable>
     <drawable name="fb_bg_edit_feedback">@drawable/fb__bg_edit_feedback</drawable>
     <drawable name="fb_bg_option_feedback">@drawable/fb__bg_option_feedback</drawable>
@@ -57,6 +58,8 @@
     <drawable name="fb_ic_smile_3">@drawable/fb__ic_smile_3</drawable>
     <drawable name="fb_ic_smile_4">@drawable/fb__ic_smile_4</drawable>
     <drawable name="fb_ic_smile_5">@drawable/fb__ic_smile_5</drawable>
+    <drawable name="fb_ic_oval">@drawable/fb__ic_oval</drawable>
+    <drawable name="fb_ic_arrow">@drawable/fb__ic_arrow</drawable>
     <drawable name="fb_ic_star">@drawable/fb__ic_star</drawable>
     <drawable name="fb_ic_star_fill">@drawable/fb__ic_star_fill</drawable>
     <drawable name="fb_ic_star_selector">@drawable/fb__ic_star_selector</drawable>

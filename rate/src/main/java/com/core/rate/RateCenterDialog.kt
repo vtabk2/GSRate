@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
@@ -16,11 +15,10 @@ import androidx.core.view.isVisible
 import com.core.rate.databinding.FbDialogRateBinding
 
 
-class RateDialog(context: Context) : AlertDialog(context) {
+class RateCenterDialog(context: Context) : AlertDialog(context) {
     private var mViewBinding = FbDialogRateBinding.inflate(LayoutInflater.from(context))
 
     var onRate: ((star: Int) -> Unit)? = null
-    var onBack: (() -> Unit)? = null
     var oldImage : Int = R.drawable.fb_ic_smile_1
     var onIgnore: (() -> Unit)? = null
     private var isRated = false
@@ -28,7 +26,7 @@ class RateDialog(context: Context) : AlertDialog(context) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
-        mViewBinding.run {
+        mViewBinding.apply {
             val listStar = listOf(
                 ivStar1,
                 ivStar2,
@@ -42,7 +40,7 @@ class RateDialog(context: Context) : AlertDialog(context) {
                     listStar.forEach {
                         it.isSelected = it.tag as Int <= view.tag as Int
                     }
-                    ivReview.isEnabled = true
+                    tvReview.isEnabled = true
                     val smileIcon = getSmileIcon(view.tag as Int)
                     if(ivSmile.isVisible) {
                         if(smileIcon != oldImage) {
@@ -54,10 +52,11 @@ class RateDialog(context: Context) : AlertDialog(context) {
                     }
                     tvTitle.setText(getTextTitle(view.tag as Int))
                     oldImage = smileIcon
-                    ivReview.setText(getTextButton(view.tag as Int))
+                    tvReview.setText(getTextButton(view.tag as Int))
                 }
             }
-            ivReview.setOnClickListener {
+
+            tvReview.setOnClickListener {
                 val star = listStar.last { it.isSelected }.tag as Int
                 onRate?.invoke(star + 1)
                 isRated = true
@@ -85,23 +84,12 @@ class RateDialog(context: Context) : AlertDialog(context) {
                 }
             })
 
-            setOnKeyListener { _, keyCode, _ ->
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    if (isShowing) {
-                        dismiss()
-                        onBack?.invoke()
-                    }
-                }
-                true
-            }
-
             setOnDismissListener {
                 if(!isRated) {
                     onIgnore?.invoke()
                 }
             }
         }
-
 
         val window = window
         val wlp = window?.attributes
@@ -111,9 +99,6 @@ class RateDialog(context: Context) : AlertDialog(context) {
             window.setAttributes(wlp)
             window.setBackgroundDrawableResource(android.R.color.transparent)
         }
-
-
-
     }
 
     private fun getSmileIcon(star: Int): Int {

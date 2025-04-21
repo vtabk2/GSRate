@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivSmile"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/fb_ic_smile_1"
-        android:visibility="invisible"
-        android:layout_marginBottom="8dp"
+        style="@style/FB_SmileImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fb_ic_smile_1"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,8 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:lineSpacingExtra="3dp"
                 android:gravity="center"
+                android:lineSpacingExtra="3dp"
                 android:text="@string/fb_rate_us_default"
                 android:textColor="@color/fb_feedback_title"
                 android:textSize="@dimen/fb_text_size_title_dialog_feedback"/>
@@ -56,65 +52,60 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar1"
-                android:layout_width="@dimen/fb_star_size"
-                android:layout_height="@dimen/fb_star_size"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/fb_bg_click_star"
-                android:padding="@dimen/fb_star_padding"
-                android:src="@drawable/fb_ic_star_selector"
-                android:visibility="invisible"
-                tools:visibility="visible"
+                style="@style/StarImage"
+                android:layout_marginEnd="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ivStar2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar2"
                 style="@style/StarImage"
-                android:layout_marginEnd="2.5dp"
-                tools:visibility="visible"
+                android:layout_marginEnd="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ivStar3"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar3"
                 style="@style/StarImage"
-                tools:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar4"
-                android:layout_marginStart="3dp"
                 style="@style/StarImage"
-                tools:visibility="visible"
+                android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivStar3"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivStar5"
-                android:layout_marginStart="3dp"
                 style="@style/StarImage"
-                tools:visibility="visible"
+                android:layout_marginStart="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivStar4"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivEndStar1"
                 android:layout_width="12dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:scaleX="@integer/scaleX_rtl"
                 android:adjustViewBounds="true"
+                android:scaleX="@integer/scaleX_rtl"
                 android:src="@drawable/fb_ic_end_star"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="@+id/ivStar5"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -123,56 +114,54 @@
             android:layout_width="350dp"
             android:layout_height="109dp"
             android:adjustViewBounds="true"
-            app:layout_constraintEnd_toEndOf="parent"
             android:scaleX="@integer/scaleX_rtl"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lnTitle"
             app:lottie_autoPlay="true"
             app:lottie_loop="false"
-            app:lottie_rawRes="@raw/rate" />
+            app:lottie_rawRes="@raw/rate"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:gravity="end"
             android:layout_marginEnd="13dp"
             android:layout_weight="1"
+            android:gravity="end"
             android:text="@string/fb_best_rate"
             android:textColor="@color/fb_text_color_best_rate"
             android:textSize="@dimen/fb_text_size_best_rate"
             app:layout_constraintEnd_toStartOf="@+id/ivHand"
             app:layout_constraintStart_toStartOf="@id/lnStar"
-            app:layout_constraintTop_toBottomOf="@+id/lnStar" />
+            app:layout_constraintTop_toBottomOf="@+id/lnStar"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivHand"
             android:layout_width="40dp"
-            android:scaleX="@integer/scaleX_rtl"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:scaleX="@integer/scaleX_rtl"
             android:src="@drawable/fb_ic_hand"
             app:layout_constraintBottom_toBottomOf="@+id/tvDescription"
             app:layout_constraintEnd_toEndOf="@id/lnStar"
             app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-            app:layout_constraintTop_toTopOf="@+id/tvDescription" />
+            app:layout_constraintTop_toTopOf="@+id/tvDescription"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/ivReview"
+            android:id="@+id/tvReview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/fb_button_rate_now_height"
             android:layout_marginTop="25dp"
             android:background="@drawable/fb_bg_rate_us_button"
-            android:enabled="false"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:enabled="false"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@string/fb_feedback_rate"
             android:textColor="#ffffff"
             android:textSize="@dimen/fb_text_size_button_rate_now"
-            app:layout_constraintTop_toBottomOf="@+id/ivHand" />
-
+            app:layout_constraintTop_toBottomOf="@+id/ivHand"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.appcompat.widget.LinearLayoutCompat>
