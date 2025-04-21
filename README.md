@@ -173,6 +173,7 @@ Custom lại style cho icon nếu icon dài:
 **Version 1.0.8**
 
 - Thêm showFeedback để gọi màn hình feedback luôn
+
 **Version 1.0.7**
 
 - Chuyển isThankForFeedbackGravityBottom ra ngoài registerActivityLifecycle
