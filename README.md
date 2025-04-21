@@ -190,6 +190,18 @@ Custom lại style cho icon nếu icon dài:
 ```
 - Cấu hình cho trạng thái khi chọn sao
 
->    FB_SmileImage cho rate dialog ở giữa màn hình
->    FB_SmileImageBottom cho rate dialog ở dưới màn hình
+> FB_SmileImage cho rate dialog ở giữa màn hình
+
+> FB_SmileImageBottom cho rate dialog ở dưới màn hình
+
+- Đổi image smile rate bottom
+
+```css
+        <drawable name="fb_ic_smile_bottom_0">@drawable/fb__ic_smile_bottom_0</drawable>
+        <drawable name="fb_ic_smile_bottom_1">@drawable/fb__ic_smile_bottom_1</drawable>
+        <drawable name="fb_ic_smile_bottom_2">@drawable/fb__ic_smile_bottom_2</drawable>
+        <drawable name="fb_ic_smile_bottom_3">@drawable/fb__ic_smile_bottom_3</drawable>
+        <drawable name="fb_ic_smile_bottom_4">@drawable/fb__ic_smile_bottom_4</drawable>
+        <drawable name="fb_ic_smile_bottom_5">@drawable/fb__ic_smile_bottom_5</drawable>
+```
 

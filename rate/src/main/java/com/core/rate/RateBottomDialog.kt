@@ -94,12 +94,13 @@ class RateBottomDialog : BottomSheetDialogFragment() {
 
     private fun getSmileIcon(star: Int): Int {
         return when (star) {
-            0 -> R.drawable.fb_ic_smile_1
-            1 -> R.drawable.fb_ic_smile_2
-            2 -> R.drawable.fb_ic_smile_3
-            3 -> R.drawable.fb_ic_smile_4
-            4 -> R.drawable.fb_ic_smile_5
-            else -> R.drawable.fb_ic_smile_1
+            0 -> R.drawable.fb_ic_smile_bottom_0
+            1 -> R.drawable.fb_ic_smile_bottom_1
+            2 -> R.drawable.fb_ic_smile_bottom_2
+            3 -> R.drawable.fb_ic_smile_bottom_3
+            4 -> R.drawable.fb_ic_smile_bottom_4
+            5 -> R.drawable.fb_ic_smile_bottom_5
+            else -> R.drawable.fb_ic_smile_bottom_0
         }
     }
 
