@@ -179,7 +179,7 @@
             android:enabled="false"
             android:gravity="center"
             android:maxLines="1"
-            android:text="@string/fb_feedback_rate"
+            android:text="@string/fb_rate"
             android:textColor="#ffffff"
             android:textSize="@dimen/fb_text_size_button_rate_now"
             app:layout_constraintBottom_toBottomOf="parent"/>

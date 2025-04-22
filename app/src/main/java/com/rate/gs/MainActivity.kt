@@ -2,6 +2,7 @@ package com.rate.gs
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.LinearLayoutCompat
@@ -14,7 +15,16 @@ class MainActivity : AppCompatActivity() {
         val button = Button(this)
         button.text = "Feedback"
         button.setOnClickListener {
-            RateInApp.instance.showDialogRateAndFeedback(context = this, forceShow = true)
+            RateInApp.instance.showDialogRateAndFeedback(
+                context = this,
+                onRated = {
+                    Log.d("TAG5", "MainActivity_onCreate: onRated")
+                },
+                onIgnoreRate = {
+                    Log.d("TAG5", "MainActivity_onCreate: onIgnoreRate")
+                },
+                forceShow = true
+            )
         }
 
         val button2 = Button(this)

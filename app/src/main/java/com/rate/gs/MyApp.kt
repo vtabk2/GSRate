@@ -7,6 +7,6 @@ class MyApp: Application() {
     override fun onCreate() {
         super.onCreate()
         RateInApp.instance.registerActivityLifecycle(this)
-        RateInApp.instance.isRateGravityBottom = false
+        RateInApp.instance.isRateGravityBottom = true
     }
 }

@@ -46,7 +46,7 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                 ivStar5
             )
             listStar.forEachIndexed { index, imageView ->
-                imageView.tag = index
+                imageView.tag = index + 1
                 imageView.setOnClickDontDoubleClick(500) { view ->
                     listStar.forEach {
                         it.isSelected = it.tag as Int <= view.tag as Int
@@ -64,9 +64,11 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                     if (view.tag as Int == 5) {
                         imageArrow.visibility = View.INVISIBLE
                         imageOval.visibility = View.INVISIBLE
+                        tvDescription.visibility = View.INVISIBLE
                     } else {
                         imageArrow.visibility = View.VISIBLE
                         imageOval.visibility = View.VISIBLE
+                        tvDescription.visibility = View.VISIBLE
                     }
                     tvMessage.visibility = View.VISIBLE
                     tvTitle.setText(getTextTitle(view.tag as Int))
@@ -94,7 +96,6 @@ class RateBottomDialog : BottomSheetDialogFragment() {
 
     private fun getSmileIcon(star: Int): Int {
         return when (star) {
-            0 -> R.drawable.fb_ic_smile_bottom_0
             1 -> R.drawable.fb_ic_smile_bottom_1
             2 -> R.drawable.fb_ic_smile_bottom_2
             3 -> R.drawable.fb_ic_smile_bottom_3
@@ -106,24 +107,24 @@ class RateBottomDialog : BottomSheetDialogFragment() {
 
     private fun getTextTitle(star: Int): Int {
         return when (star) {
-            0, 1, 2, 3 -> R.string.fb_rate_bottom_bad
-            4 -> R.string.fb_rate_bottom_good
+            1, 2, 3 -> R.string.fb_rate_bottom_bad
+            4, 5 -> R.string.fb_rate_bottom_good
             else -> R.string.fb_rate_bottom_default
         }
     }
 
     private fun getTextMessage(star: Int): Int {
         return when (star) {
-            0, 1, 2, 3 -> R.string.fb_rate_bottom_mess_bad
-            4 -> R.string.fb_rate_bottom_mess_good
+            1, 2, 3, 4 -> R.string.fb_rate_bottom_mess_bad
+            5 -> R.string.fb_rate_bottom_mess_good
             else -> 0
         }
     }
 
     private fun getTextButton(star: Int): Int {
         return when (star) {
-            0, 1, 2, 3 -> R.string.fb_feedback_rate
-            4 -> R.string.fb_rate_on_google_play
+            1, 2, 3, 4 -> R.string.fb_text_feedback_to
+            5 -> R.string.fb_rate_on_google_play
             else -> R.string.fb_feedback_rate
         }
     }
