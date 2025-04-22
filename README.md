@@ -172,7 +172,7 @@ Custom lại style cho icon nếu icon dài:
 **Version 1.0.12**
 - Sửa lỗi ấn 4 sao lại mở màn hình store
 
-- **Version 1.0.11**
+**Version 1.0.11**
 
 - Đổi giao diện rate bottom
 - Rate center(mặc định):
