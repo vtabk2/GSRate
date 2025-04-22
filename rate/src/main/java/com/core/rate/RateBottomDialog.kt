@@ -91,7 +91,7 @@ class RateBottomDialog : BottomSheetDialogFragment() {
             }
             tvMessage.visibility = if (star > 0) View.VISIBLE else View.GONE
             tvTitle.setText(getTextTitle(star))
-            tvMessage.text = getTextMessage(star)
+            tvMessage.setText(getTextMessage(star))
             oldImage = smileIcon
             tvReview.setText(getTextButton(star))
         }
@@ -123,11 +123,11 @@ class RateBottomDialog : BottomSheetDialogFragment() {
         }
     }
 
-    private fun getTextMessage(star: Int): String {
+    private fun getTextMessage(star: Int): Int {
         return when (star) {
-            1, 2, 3, 4 -> getString(R.string.fb_rate_bottom_mess_bad)
-            5 -> getString(R.string.fb_rate_bottom_mess_good)
-            else -> ""
+            1, 2, 3, 4 -> R.string.fb_rate_bottom_mess_bad
+            5 -> R.string.fb_rate_bottom_mess_good
+            else -> R.string.fb_rate_bottom_mess_default
         }
     }
 

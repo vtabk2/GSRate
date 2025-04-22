@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:1.0.10'
+                    implementation 'com.github.vtabk2:GSRate:1.0.11'
             }
 ```
 **Requirement:**
@@ -226,7 +226,7 @@ Custom lại style cho icon nếu icon dài:
 ```css
         fb_rate_bottom_mess_bad
         fb_rate_bottom_mess_good
-        0(mặc định)
+        fb_rate_bottom_mess_default(mặc định)
 ```
 
 > button

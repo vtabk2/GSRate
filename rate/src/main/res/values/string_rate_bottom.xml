@@ -7,4 +7,5 @@
     <string name="fb_rate_bottom_mess_bad">Please leave us some feedback</string>
     <string name="fb_rate_bottom_mess_good">Thanks for your feedback</string>
     <string name="fb_rate">Rate</string>
+    <string name="fb_rate_bottom_mess_default"> </string>
 </resources>

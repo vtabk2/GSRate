@@ -34,25 +34,16 @@ class RateCenterDialog(context: Context) : AlertDialog(context) {
                 ivStar4,
                 ivStar5
             )
+            // khởi tạo mặc định lúc đầu khi chưa chọn sao
+            updateUi(0)
+
             listStar.forEachIndexed { index, imageView ->
-                imageView.tag = index
+                imageView.tag = index + 1
                 imageView.setOnClickDontDoubleClick(500) { view ->
                     listStar.forEach {
                         it.isSelected = it.tag as Int <= view.tag as Int
                     }
-                    tvReview.isEnabled = true
-                    val smileIcon = getSmileIcon(view.tag as Int)
-                    if(ivSmile.isVisible) {
-                        if(smileIcon != oldImage) {
-                            animateIconChange(ivSmile, smileIcon)
-                        }
-                    } else {
-                        ivSmile.visibility = View.VISIBLE
-                        ivSmile.setImageResource(smileIcon)
-                    }
-                    tvTitle.setText(getTextTitle(view.tag as Int))
-                    oldImage = smileIcon
-                    tvReview.setText(getTextButton(view.tag as Int))
+                    updateUi(star = imageView.tag as Int)
                 }
             }
 
@@ -101,29 +92,51 @@ class RateCenterDialog(context: Context) : AlertDialog(context) {
         }
     }
 
+    private fun updateUi(star: Int) {
+        mViewBinding.apply {
+            tvReview.isEnabled = star > 0
+            val smileIcon = getSmileIcon(star)
+            if (star == 0) {
+                ivSmile.visibility = View.INVISIBLE
+            } else {
+                if (ivSmile.isVisible) {
+                    if (smileIcon != oldImage) {
+                        animateIconChange(ivSmile, smileIcon)
+                    }
+                } else {
+                    ivSmile.visibility = View.VISIBLE
+                    ivSmile.setImageResource(smileIcon)
+                }
+            }
+            tvTitle.setText(getTextTitle(star))
+            oldImage = smileIcon
+            tvReview.setText(getTextButton(star))
+        }
+    }
+
     private fun getSmileIcon(star: Int): Int {
         return when(star) {
-            0 -> R.drawable.fb_ic_smile_1
-            1 -> R.drawable.fb_ic_smile_2
-            2 -> R.drawable.fb_ic_smile_3
-            3 -> R.drawable.fb_ic_smile_4
-            4 -> R.drawable.fb_ic_smile_5
+            1 -> R.drawable.fb_ic_smile_1
+            2 -> R.drawable.fb_ic_smile_2
+            3 -> R.drawable.fb_ic_smile_3
+            4 -> R.drawable.fb_ic_smile_4
+            5 -> R.drawable.fb_ic_smile_5
             else -> R.drawable.fb_ic_smile_1
         }
     }
 
     private fun getTextTitle(star: Int): Int {
         return when(star) {
-            0, 1, 2, 3 -> R.string.fb_rate_us_bad
-            4 -> R.string.fb_rate_us_good
+            1, 2, 3, 4 -> R.string.fb_rate_us_bad
+            5 -> R.string.fb_rate_us_good
             else -> R.string.fb_rate_us_default
         }
     }
 
     private fun getTextButton(star: Int): Int {
         return when(star) {
-            0, 1, 2, 3 -> R.string.fb_feedback_rate
-            4 -> R.string.fb_rate_on_google_play
+            1, 2, 3, 4 -> R.string.fb_feedback_rate
+            5 -> R.string.fb_rate_on_google_play
             else -> R.string.fb_feedback_rate
         }
     }
