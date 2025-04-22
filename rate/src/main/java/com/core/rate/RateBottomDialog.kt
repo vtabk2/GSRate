@@ -45,36 +45,16 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                 ivStar4,
                 ivStar5
             )
+            // khởi tạo mặc định lúc đầu khi chưa chọn sao
+            updateUi(0)
+
             listStar.forEachIndexed { index, imageView ->
                 imageView.tag = index + 1
                 imageView.setOnClickDontDoubleClick(500) { view ->
                     listStar.forEach {
                         it.isSelected = it.tag as Int <= view.tag as Int
                     }
-                    tvReview.isEnabled = true
-                    val smileIcon = getSmileIcon(view.tag as Int)
-                    if (ivSmile.isVisible) {
-                        if (smileIcon != oldImage) {
-                            ivSmile.setImageResource(smileIcon)
-                        }
-                    } else {
-                        ivSmile.visibility = View.VISIBLE
-                        ivSmile.setImageResource(smileIcon)
-                    }
-                    if (view.tag as Int == 5) {
-                        imageArrow.visibility = View.INVISIBLE
-                        imageOval.visibility = View.INVISIBLE
-                        tvDescription.visibility = View.INVISIBLE
-                    } else {
-                        imageArrow.visibility = View.VISIBLE
-                        imageOval.visibility = View.VISIBLE
-                        tvDescription.visibility = View.VISIBLE
-                    }
-                    tvMessage.visibility = View.VISIBLE
-                    tvTitle.setText(getTextTitle(view.tag as Int))
-                    tvMessage.setText(getTextMessage(view.tag as Int))
-                    oldImage = smileIcon
-                    tvReview.setText(getTextButton(view.tag as Int))
+                    updateUi(star = imageView.tag as Int)
                 }
             }
 
@@ -84,6 +64,36 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                 isRated = true
                 dismiss()
             }
+        }
+    }
+
+    private fun updateUi(star: Int) {
+        mViewBinding.apply {
+            tvReview.isEnabled = star > 0
+
+            val smileIcon = getSmileIcon(star)
+            if (ivSmile.isVisible) {
+                if (smileIcon != oldImage) {
+                    ivSmile.setImageResource(smileIcon)
+                }
+            } else {
+                ivSmile.visibility = View.VISIBLE
+                ivSmile.setImageResource(smileIcon)
+            }
+            if (star == 5) {
+                imageArrow.visibility = View.INVISIBLE
+                imageOval.visibility = View.INVISIBLE
+                tvDescription.visibility = View.INVISIBLE
+            } else {
+                imageArrow.visibility = View.VISIBLE
+                imageOval.visibility = View.VISIBLE
+                tvDescription.visibility = View.VISIBLE
+            }
+            tvMessage.visibility = if (star > 0) View.VISIBLE else View.GONE
+            tvTitle.setText(getTextTitle(star))
+            tvMessage.text = getTextMessage(star)
+            oldImage = smileIcon
+            tvReview.setText(getTextButton(star))
         }
     }
 
@@ -113,11 +123,11 @@ class RateBottomDialog : BottomSheetDialogFragment() {
         }
     }
 
-    private fun getTextMessage(star: Int): Int {
+    private fun getTextMessage(star: Int): String {
         return when (star) {
-            1, 2, 3, 4 -> R.string.fb_rate_bottom_mess_bad
-            5 -> R.string.fb_rate_bottom_mess_good
-            else -> 0
+            1, 2, 3, 4 -> getString(R.string.fb_rate_bottom_mess_bad)
+            5 -> getString(R.string.fb_rate_bottom_mess_good)
+            else -> ""
         }
     }
 

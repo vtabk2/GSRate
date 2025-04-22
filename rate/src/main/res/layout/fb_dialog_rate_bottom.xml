@@ -52,10 +52,10 @@
                 android:gravity="center"
                 android:lineSpacingExtra="3dp"
                 android:maxLines="6"
-                android:text="@string/fb_rate_bottom_default"
                 android:textColor="@color/fb_feedback_title"
                 android:textSize="@dimen/fb_text_size_title_dialog_rate_bottom"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                tools:text="@string/fb_rate_bottom_default"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMessage"
@@ -67,8 +67,8 @@
                 android:paddingTop="15dp"
                 android:textColor="#626262"
                 android:textSize="16sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@id/tvDescription"/>
+                app:layout_constraintBottom_toTopOf="@id/tvDescription"
+                tools:visibility="gone"/>
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -176,12 +176,11 @@
             android:layout_marginBottom="17dp"
             android:background="@drawable/fb_bg_rate_us_button"
             android:ellipsize="end"
-            android:enabled="false"
             android:gravity="center"
             android:maxLines="1"
-            android:text="@string/fb_rate"
             android:textColor="#ffffff"
             android:textSize="@dimen/fb_text_size_button_rate_now"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="@string/fb_rate"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
