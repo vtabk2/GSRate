@@ -60,7 +60,7 @@ class RateBottomDialog : BottomSheetDialogFragment() {
 
             tvReview.setOnClickListener {
                 val star = listStar.last { it.isSelected }.tag as Int
-                onRate?.invoke(star + 1)
+                onRate?.invoke(star)
                 isRated = true
                 dismiss()
             }
