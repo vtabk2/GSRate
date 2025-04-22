@@ -169,6 +169,74 @@ Custom lại style cho icon nếu icon dài:
 > fb_show_header_thank_feedback = true để hiển thị header
 
 # Phiên bản cập nhật
+
+**Version 1.0.11**
+
+- Đổi giao diện rate bottom
+- Rate center(mặc định):
+
+> icon
+
+```css
+        fb_ic_smile_1
+        fb_ic_smile_2
+        fb_ic_smile_3
+        fb_ic_smile_4
+        fb_ic_smile_5
+        fb_ic_smile_1(mặc định)
+```
+
+> title
+```css
+        fb_rate_us_bad
+        fb_rate_us_good
+        fb_rate_us_default(mặc định)
+```
+
+> button
+```css
+        fb_feedback_rate
+        fb_rate_on_google_play
+        fb_feedback_rate(mặc định)
+```
+
+- Rate bottom :
+
+> icon
+
+```css
+        fb_ic_smile_bottom_1
+        fb_ic_smile_bottom_2
+        fb_ic_smile_bottom_3
+        fb_ic_smile_bottom_4
+        fb_ic_smile_bottom_5
+        fb_ic_smile_bottom_0(mặc định)
+```
+
+> title
+
+```css
+        fb_rate_bottom_bad
+        fb_rate_bottom_good
+        fb_rate_bottom_default(mặc định)
+```
+
+> message
+
+```css
+        fb_rate_bottom_mess_bad
+        fb_rate_bottom_mess_good
+        0(mặc định)
+```
+
+> button
+
+```css
+        fb_text_feedback_to
+        fb_rate_on_google_play
+        fb_rate(mặc định)
+```
+
 **Version 1.0.10**
 - Thêm fb_dialog_rate_bottom_background_layout_marginTop để thay đổi vị trí image Smile
 - Tách size text title rate và ratio bottom

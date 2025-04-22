@@ -125,7 +125,7 @@ class RateBottomDialog : BottomSheetDialogFragment() {
         return when (star) {
             1, 2, 3, 4 -> R.string.fb_text_feedback_to
             5 -> R.string.fb_rate_on_google_play
-            else -> R.string.fb_feedback_rate
+            else -> R.string.fb_rate
         }
     }
 }
