@@ -128,7 +128,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="13dp"
             android:layout_weight="1"
-            android:gravity="end"
+            android:textAlignment="viewEnd"
             android:text="@string/fb_best_rate"
             android:textColor="@color/fb_text_color_best_rate"
             android:textSize="@dimen/fb_text_size_best_rate"
