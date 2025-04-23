@@ -1,5 +1,5 @@
 [versions]
-agp = "8.9.1"
+agp = "8.9.2"
 appcompat = "1.7.0"
 flexbox = "3.0.0"
 fragmentKtx = "1.8.6"

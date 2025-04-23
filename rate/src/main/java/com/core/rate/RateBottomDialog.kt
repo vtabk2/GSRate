@@ -16,7 +16,7 @@ class RateBottomDialog : BottomSheetDialogFragment() {
     private lateinit var mViewBinding: FbDialogRateBottomBinding
 
     var onRate: ((star: Int) -> Unit)? = null
-    var oldImage: Int = R.drawable.fb_ic_smile_1
+    var oldImage: Int = R.drawable.fb_ic_smile_bottom_0
     var onIgnore: (() -> Unit)? = null
     private var isRated = false
 
