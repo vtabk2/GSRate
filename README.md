@@ -175,6 +175,7 @@ Custom lại style cho icon nếu icon dài:
 - Thêm cấu hình rate bottom dialog
 
 > fb_color_oval : Đổi màu hình tròn
+
 > fb_color_arrow : Đổi màu mũi tên
 
 **Version 1.0.14**
