@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.core.rate.databinding.FbDialogRateBottomBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -30,7 +31,13 @@ class RateBottomDialog : BottomSheetDialogFragment() {
         dialog.setOnShowListener { dialogInterface ->
             val bottomSheetDialog = dialogInterface as BottomSheetDialog
             val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-            bottomSheet?.setBackgroundColor(Color.TRANSPARENT)
+            bottomSheet?.let {
+                it.setBackgroundColor(Color.TRANSPARENT)
+                BottomSheetBehavior.from(it).apply {
+                    setState(BottomSheetBehavior.STATE_EXPANDED)
+                    isDraggable = false
+                }
+            }
         }
         return dialog
     }
