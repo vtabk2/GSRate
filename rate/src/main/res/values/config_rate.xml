@@ -74,6 +74,9 @@
     <drawable name="fb_ic_star_fill">@drawable/fb__ic_star_fill</drawable>
     <drawable name="fb_ic_star_selector">@drawable/fb__ic_star_selector</drawable>
 
+    <color name="fb_color_oval">#2AA4EA</color>
+    <color name="fb_color_arrow">#2AA4EA</color>
+
     <string name="fb_email_feedback" translatable="false">kunkunnapps@gmail.com</string>
 
 

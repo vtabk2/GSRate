@@ -169,6 +169,14 @@ Custom lại style cho icon nếu icon dài:
 > fb_show_header_thank_feedback = true để hiển thị header
 
 # Phiên bản cập nhật
+
+**Version 1.0.15**
+
+- Thêm cấu hình rate bottom dialog
+
+> fb_color_oval : Đổi màu hình tròn
+> fb_color_arrow : Đổi màu mũi tên
+
 **Version 1.0.14**
 - Thêm dịch cách ngôn ngữ khác nhau
 
