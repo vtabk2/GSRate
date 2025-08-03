@@ -26,11 +26,11 @@ class RateInApp {
     var isShowThanks = false
     var isRateGravityBottom = false
     var isThankForFeedbackGravityBottom = true
-    var isHideNavigationBar = true
 
+    var isHideNavigationBar = false
     var isHideStatusBar = false
-    var isSpaceStatusBar = false
-    var isSpaceDisplayCutout = false
+    var isSpaceStatusBar = true
+    var isSpaceDisplayCutout = true
 
     private var intentActivity = HashMap<Int, ActivityResultLauncher<Intent>>()
 
