@@ -6,7 +6,6 @@ import android.app.Application.ActivityLifecycleCallbacks
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -27,6 +26,11 @@ class RateInApp {
     var isShowThanks = false
     var isRateGravityBottom = false
     var isThankForFeedbackGravityBottom = true
+    var isHideNavigationBar = true
+
+    var isHideStatusBar = false
+    var isSpaceStatusBar = false
+    var isSpaceDisplayCutout = false
 
     private var intentActivity = HashMap<Int, ActivityResultLauncher<Intent>>()
 
@@ -34,18 +38,14 @@ class RateInApp {
     fun registerActivityLifecycle(application: Application) {
         application.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                Log.e(TAG, "onActivityCreated: ${activity::class.java.simpleName}")
                 (activity as? ComponentActivity)?.let {
                     registerForFeedback(activity)
                 }
             }
 
-            override fun onActivityStarted(activity: Activity) {
-                Log.e(TAG, "onActivityStarted: ${activity::class.java.simpleName}")
-            }
+            override fun onActivityStarted(activity: Activity) {}
 
             override fun onActivityResumed(activity: Activity) {
-                Log.e(TAG, "onActivityResumed: ${activity::class.java.simpleName}")
                 if (activity !is FeedbackActivity) {
                     isCanShowAppOpen = true
                     if (isShowThanks && activity is AppCompatActivity) {
@@ -62,20 +62,13 @@ class RateInApp {
                 }
             }
 
-            override fun onActivityPaused(activity: Activity) {
-                Log.e(TAG, "onActivityPaused: ${activity::class.java.simpleName}")
-            }
+            override fun onActivityPaused(activity: Activity) {}
 
-            override fun onActivityStopped(activity: Activity) {
-                Log.e(TAG, "onActivityStopped: ${activity::class.java.simpleName}")
-            }
+            override fun onActivityStopped(activity: Activity) {}
 
-            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-                Log.e(TAG, "onActivitySaveInstanceState: ${activity::class.java.simpleName}")
-            }
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
 
             override fun onActivityDestroyed(activity: Activity) {
-                Log.e(TAG, "onActivityDestroyed: ${activity::class.java.simpleName}")
                 (activity as? ComponentActivity)?.let {
                     intentActivity[activity.hashCode()]?.unregister()
                 }
@@ -114,7 +107,6 @@ class RateInApp {
                 }
 
                 it.onIgnore = {
-                    Log.e(TAG, "showDialogRateAndFeedback: onIgnore")
                     onIgnoreRate()
                 }
             }.show(context.supportFragmentManager, "rate_bottom")
@@ -126,7 +118,6 @@ class RateInApp {
                 }
 
                 it.onIgnore = {
-                    Log.e(TAG, "showDialogRateAndFeedback: onIgnore")
                     onIgnoreRate()
                 }
             }.show()
@@ -144,9 +135,6 @@ class RateInApp {
                 if (!onShowThanks()) {
                     isShowThanks = true
                 }
-                Log.e(TAG, "showFeedback: true")
-            } else {
-                Log.e(TAG, "showFeedback: false")
             }
         }
     }

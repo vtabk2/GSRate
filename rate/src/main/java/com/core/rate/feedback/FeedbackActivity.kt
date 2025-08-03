@@ -1,18 +1,22 @@
 package com.core.rate.feedback
 
 import android.app.Activity
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
-import android.view.WindowManager
+import android.view.WindowInsetsController
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.widget.addTextChangedListener
 import com.core.rate.R
+import com.core.rate.RateInApp
 import com.core.rate.databinding.FbActivityFeedbackBinding
+import com.core.rate.hideNavigationBar
 import com.core.rate.setOnClickDontDoubleClick
 
 class FeedbackActivity: AppCompatActivity() {
@@ -23,37 +27,40 @@ class FeedbackActivity: AppCompatActivity() {
 
         _viewBinding = FbActivityFeedbackBinding.inflate(layoutInflater)
         setContentView(_viewBinding.root)
-        makeStatusBarTransparent()
         initView()
+
+        if (RateInApp.instance.isHideNavigationBar) {
+            hideNavigationBar()
+        }
+
+        enableEdgeToEdge()
+
+        if (RateInApp.instance.isHideStatusBar) {
+            hideSystemBars(window)
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(_viewBinding.root) { view, windowInsets ->
+            // Lấy thông tin về kích thước của các thanh hệ thống
+            val systemBarInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val cutoutInsets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout())
+
+            // Áp dụng padding cho view để nó không bị che
+            // Ở đây, ta thêm padding ở trên cùng và dưới cùng của layout
+            val topPadding = if (RateInApp.instance.isSpaceDisplayCutout && cutoutInsets.top > 0) {
+                cutoutInsets.top
+            } else if (RateInApp.instance.isSpaceStatusBar) {
+                systemBarInsets.top
+            } else 0
+
+            val bottomPadding = if (RateInApp.instance.isHideNavigationBar) 0 else systemBarInsets.bottom
+            view.setPadding(systemBarInsets.left, topPadding, systemBarInsets.right, bottomPadding)
+
+            // Trả về windowInsets để các view con có thể tiếp tục xử lý
+            windowInsets // Hoặc windowInsets nếu muốn các view con tiếp tục nhận
+        }
     }
 
-    private fun makeStatusBarTransparent() {
-        window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-
-            decorView.systemUiVisibility = if(true) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
-                } else {
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                }
-            } else {
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            }
-            statusBarColor = Color.TRANSPARENT
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-            window.insetsController?.show(WindowInsets.Type.navigationBars())
-        }
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-    }
-
-    fun displayCutout(): Int {
+    private fun displayCutout(): Int {
         var height = 0
         if (window != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -70,14 +77,14 @@ class FeedbackActivity: AppCompatActivity() {
         return height
     }
 
-    fun checkWindowReady(rootView: View, onReady: () -> Unit) {
+    private fun checkWindowReady(rootView: View, onReady: () -> Unit) {
         ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, windowInsets ->
             onReady()
             windowInsets
         }
     }
 
-    fun initView() {
+    private fun initView() {
         checkWindowReady(_viewBinding.root) {
             _viewBinding.actionBar.setPadding(0, displayCutout(), 0, 0)
         }
@@ -127,6 +134,30 @@ class FeedbackActivity: AppCompatActivity() {
                 setResult(Activity.RESULT_OK)
                 finish()
             }
+        }
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if (RateInApp.instance.isHideNavigationBar) {
+            hideNavigationBar()
+        }
+    }
+
+    private fun hideSystemBars(window: android.view.Window) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val insetsController = window.insetsController ?: return
+            insetsController.hide(WindowInsets.Type.statusBars())
+            insetsController.systemBarsBehavior =
+                WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        } else {
+            val insetsController = WindowInsetsControllerCompat(
+                window,
+                window.decorView
+            )
+            insetsController.hide(WindowInsetsCompat.Type.statusBars())
+            insetsController.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 }
