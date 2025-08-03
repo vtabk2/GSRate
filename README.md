@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:1.0.16'
+                    implementation 'com.github.vtabk2:GSRate:2.0.0'
             }
 ```
 **Requirement:**
@@ -63,6 +63,14 @@ Sẽ ko show dialog, nếu vẫn muốn show thì set forceShow = true (dùng kh
 
         <string name="fb_email_feedback" translatable="false">kunkunnapps@gmail.com</string>
 
+**Tùy chỉnh giao diện FeedbackActivity**
+
+```css
+        RateInApp.instance.isHideNavigationBar = true
+        RateInApp.instance.isHideStatusBar = true
+        RateInApp.instance.isSpaceStatusBar = true
+        RateInApp.instance.isSpaceDisplayCutout = true
+```
 
 # Custom UI
 
@@ -255,6 +263,23 @@ Custom lại style cho icon nếu icon dài:
         fb_rate_on_google_play
         fb_rate(mặc định)
 ```
+
+**Version 2.0.0**
+
+- Nâng cấp thư viện dùng target 35
+- Ẩn hiện navigation bar
+
+  `isHideNavigationBar`
+
+- Ẩn hiện status bar
+  `isHideStatusBar`
+
+- Có giữ khoảng cách status bar không ?
+  `isSpaceStatusBar`
+
+- Có giữ khoảng cách cutout không ?
+
+  `isSpaceDisplayCutout`
 
 **Version 1.0.10**
 - Thêm fb_dialog_rate_bottom_background_layout_marginTop để thay đổi vị trí image Smile

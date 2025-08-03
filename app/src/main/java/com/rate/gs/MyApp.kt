@@ -11,7 +11,7 @@ class MyApp: Application() {
 
         RateInApp.instance.isHideNavigationBar = true
         RateInApp.instance.isHideStatusBar = true
-        RateInApp.instance.isSpaceStatusBar = false
+        RateInApp.instance.isSpaceStatusBar = true
         RateInApp.instance.isSpaceDisplayCutout = true
     }
 }
