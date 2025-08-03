@@ -11,7 +11,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.StatFs
-import android.util.Log
 import com.core.rate.R
 import java.util.Locale
 
@@ -166,7 +165,6 @@ object ShareUtils {
                 .append("\n\n")
                 .append(feedback.content).append("\n\n\n\n")
                 .append(appName).append(" v").append(versionName).append("\n\n")
-//                .append("Package Name: ").append(BuildConfig.APPLICATION_ID).append("\n")
                 .append("Device Model: ").append(getDeviceName()).append("\n")
                 .append("Android Version: ").append(Build.VERSION.RELEASE).append("\n")
                 .append("Resolution: ").append(getResolution()).append("\n")
@@ -189,7 +187,6 @@ object ShareUtils {
             context.getString(R.string.fb_share_with),
             object : ComponentNameFilter {
                 override fun shouldBeFilteredOut(componentName: ComponentName): Boolean {
-                    Log.d("TAG", "shouldBeFilteredOut: $componentName")
                     return PACKAGE_MAIL_LIST.contains(componentName.packageName)
                 }
             })

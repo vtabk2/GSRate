@@ -8,10 +8,10 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
-import android.provider.Telephony.Mms.Rate
 import android.view.View
 import android.widget.Toast
-import com.core.rate.R
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.core.rate.feedback.OnClickCheckDoubleClick
 import com.google.android.play.core.review.ReviewManagerFactory
 
@@ -92,4 +92,19 @@ fun isInternetAvailable(context: Context): Boolean {
         }
     }
     return result
+}
+
+fun Activity.hideNavigationBar() {
+    WindowInsetsControllerCompat(
+        window,
+        window.decorView.findViewById(android.R.id.content)
+    ).let { controller ->
+        controller.hide(WindowInsetsCompat.Type.navigationBars())
+
+        // When the screen is swiped up at the bottom
+        // of the application, the navigationBar shall
+        // appear for some time
+        controller.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+    }
 }

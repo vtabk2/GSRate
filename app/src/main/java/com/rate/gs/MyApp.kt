@@ -8,5 +8,10 @@ class MyApp: Application() {
         super.onCreate()
         RateInApp.instance.registerActivityLifecycle(this)
         RateInApp.instance.isRateGravityBottom = true
+
+        RateInApp.instance.isHideNavigationBar = true
+        RateInApp.instance.isHideStatusBar = true
+        RateInApp.instance.isSpaceStatusBar = false
+        RateInApp.instance.isSpaceDisplayCutout = true
     }
 }
