@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:2.0.1'
+                    implementation 'com.github.vtabk2:GSRate:2.0.2'
             }
 ```
 **Requirement:**
