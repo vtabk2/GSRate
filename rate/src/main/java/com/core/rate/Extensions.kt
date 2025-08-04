@@ -6,10 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.Uri
 import android.os.Build
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.edit
+import androidx.core.net.toUri
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.core.rate.feedback.OnClickCheckDoubleClick
@@ -33,7 +34,7 @@ fun Activity.rateApp(inAppReview: Boolean = false) {
                 val reviewInfo = taskInfo.result
                 val flow = mReviewManager.launchReviewFlow(this, reviewInfo)
                 flow.addOnCompleteListener { flowTask ->
-                    sharedPreferences.edit().putBoolean("rate_in_app", true).apply()
+                    sharedPreferences.edit { putBoolean("rate_in_app", true) }
                 }
             } else {
                 openAppInStore()
@@ -46,10 +47,9 @@ fun Activity.rateApp(inAppReview: Boolean = false) {
 
 
 fun Context.openAppInStore() {
-    val uri =
-        Uri.parse("market://details?id=" + this.packageName)
+    val uri = ("market://details?id=" + this.packageName).toUri()
     val myAppLinkToMarket = Intent(Intent.ACTION_VIEW, uri)
-    val webUri = Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+    val webUri = "https://play.google.com/store/apps/details?id=$packageName".toUri()
     try {
         startActivity(myAppLinkToMarket.apply { setPackage("com.android.vending") })
     } catch (e: ActivityNotFoundException) {
