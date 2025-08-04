@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:2.0.0'
+                    implementation 'com.github.vtabk2:GSRate:2.0.1'
             }
 ```
 **Requirement:**
@@ -177,6 +177,29 @@ Custom lại style cho icon nếu icon dài:
 > fb_show_header_thank_feedback = true để hiển thị header
 
 # Phiên bản cập nhật
+
+**Version 2.0.1**
+
+- Thêm `fb_button_send_margin_bottom`
+- Thêm `fb_button_send_margin_top`
+
+**Version 2.0.0**
+
+- Nâng cấp thư viện dùng target 35
+- Ẩn hiện navigation bar
+
+  `isHideNavigationBar`
+
+- Ẩn hiện status bar
+  `isHideStatusBar`
+
+- Có giữ khoảng cách status bar không ?
+  `isSpaceStatusBar`
+
+- Có giữ khoảng cách cutout không ?
+
+  `isSpaceDisplayCutout`
+
 **Version 1.0.16**
 - Chặn draggable dialog và mở rộng tối đa rate bottom dialog
 
@@ -263,23 +286,6 @@ Custom lại style cho icon nếu icon dài:
         fb_rate_on_google_play
         fb_rate(mặc định)
 ```
-
-**Version 2.0.0**
-
-- Nâng cấp thư viện dùng target 35
-- Ẩn hiện navigation bar
-
-  `isHideNavigationBar`
-
-- Ẩn hiện status bar
-  `isHideStatusBar`
-
-- Có giữ khoảng cách status bar không ?
-  `isSpaceStatusBar`
-
-- Có giữ khoảng cách cutout không ?
-
-  `isSpaceDisplayCutout`
 
 **Version 1.0.10**
 - Thêm fb_dialog_rate_bottom_background_layout_marginTop để thay đổi vị trí image Smile
