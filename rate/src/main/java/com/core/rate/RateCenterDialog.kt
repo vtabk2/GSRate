@@ -13,6 +13,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.core.rate.databinding.FbDialogRateBinding
+import com.core.rate.utils.hideNavigationBar
 
 
 class RateCenterDialog(context: Context) : AlertDialog(context) {
@@ -89,6 +90,10 @@ class RateCenterDialog(context: Context) : AlertDialog(context) {
             wlp.height = WindowManager.LayoutParams.WRAP_CONTENT
             window.setAttributes(wlp)
             window.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
+        if (RateInApp.instance.isHideNavigationBar) {
+            hideNavigationBar()
         }
     }
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.core.rate.databinding.FbDialogThankFeedbackBinding
+import com.core.rate.utils.hideNavigationBarForBottomDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -36,6 +37,10 @@ class ThankForFeedbackBottomDialog : BottomSheetDialogFragment() {
 
             tvOk.setOnClickListener {
                 dismiss()
+            }
+
+            if (RateInApp.instance.isHideNavigationBar) {
+                requireDialog().hideNavigationBarForBottomDialog()
             }
         }
     }

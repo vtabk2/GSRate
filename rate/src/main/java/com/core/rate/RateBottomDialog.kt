@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.core.rate.databinding.FbDialogRateBottomBinding
+import com.core.rate.utils.hideNavigationBarForBottomDialog
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -70,6 +71,10 @@ class RateBottomDialog : BottomSheetDialogFragment() {
                 onRate?.invoke(star)
                 isRated = true
                 dismiss()
+            }
+
+            if (RateInApp.instance.isHideNavigationBar) {
+                requireDialog().hideNavigationBarForBottomDialog()
             }
         }
     }
