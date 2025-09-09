@@ -139,6 +139,10 @@ class FeedbackActivity: AppCompatActivity() {
                 if (RateInApp.instance.isHideNavigationBar) {
                     hideNavigationBar()
                 }
+
+                if (RateInApp.instance.isHideStatusBar) {
+                    hideSystemBars(window)
+                }
             }
         }
     }
@@ -147,6 +151,10 @@ class FeedbackActivity: AppCompatActivity() {
         super.onWindowFocusChanged(hasFocus)
         if (RateInApp.instance.isHideNavigationBar) {
             hideNavigationBar()
+        }
+
+        if (RateInApp.instance.isHideStatusBar) {
+            hideSystemBars(window)
         }
     }
 
