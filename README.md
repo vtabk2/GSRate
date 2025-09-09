@@ -14,7 +14,7 @@ Add it in your root build.gradle at the end of repositories:
 **Step 2.** Add the dependency
 ```css
         dependencies {
-                    implementation 'com.github.vtabk2:GSRate:2.0.3'
+                    implementation 'com.github.vtabk2:GSRate:2.0.4'
             }
 ```
 **Requirement:**
@@ -177,6 +177,9 @@ Custom lại style cho icon nếu icon dài:
 > fb_show_header_thank_feedback = true để hiển thị header
 
 # Phiên bản cập nhật
+**Version 2.0.4**
+
+- Sửa tính năng ẩn navigation bar khi mở keyboard s8 rồi ấn tắt
 
 **Version 2.0.3**
 

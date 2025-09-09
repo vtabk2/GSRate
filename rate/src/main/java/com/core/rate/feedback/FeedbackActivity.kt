@@ -134,6 +134,12 @@ class FeedbackActivity: AppCompatActivity() {
                 setResult(Activity.RESULT_OK)
                 finish()
             }
+
+            nlRoot.onBackKeyboardCallback = {
+                if (RateInApp.instance.isHideNavigationBar) {
+                    hideNavigationBar()
+                }
+            }
         }
     }
 
